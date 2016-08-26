@@ -1,4 +1,5 @@
 @import "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
+@import "../src/flexbox.min.css";
 
 *, *:before, *:after {
     box-sizing: border-box;
@@ -27,4 +28,8 @@ p {
 
 .code {
     white-space: pre-wrap;
+}
+
+.link-href:after {
+    content: attr(href);
 }

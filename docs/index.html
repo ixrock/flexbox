@@ -3,14 +3,21 @@
 <head>
   <meta charset="UTF-8">
   <title>Flexbox</title>
-  <link rel="stylesheet" href="flexbox.min.css"/>
-  <link rel="stylesheet" href="examples/common.css"/>
+  <link rel="stylesheet" href="./common.css"/>
 </head>
 <body>
 
-<main style="padding: 2rem">
+<main style="padding: 2rem; margin: auto; width: 75%;">
   <h1>Flexbox + autoprefixer = ❤</h1>
   <p>Learn flex boxes as is: classes just reflects css-properties!</p>
+
+  <h2>Install</h2>
+  <ul>
+    <li>Github: <a href="https://github.com/ixrock/flex.box.git" class="link-href"></a></li>
+    <li>Node: <code>npm install flex.box --save</code></li>
+  </ul>
+
+  <h3>API</h3>
 
   <h3>Container:</h3>
   <div class="code"><code>.flex</code>
@@ -36,7 +43,7 @@
   </div>
 
   <h3>Children:</h3>
-  <div class="code">.flex > .box
+  <div class="code"><code>.flex > .box</code>
     [<code>.first</code>] = put element to the start (<var>order: -1</var>)
     [<code>.grow</code>] = allow a flex child to grow and take all free space in flex container
     [<code>.noshrink</code>] = don't allow to the flex child reduce its size, might be useful when sibling children have <code>.grow</code> class

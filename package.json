@@ -5,11 +5,7 @@
   "main": "src/flexbox.scss",
   "author": "ixrock",
   "license": "MIT",
-  "keywords": [
-    "flexbox",
-    "css",
-    "sass"
-  ],
+  "keywords": ["flexbox", "css", "sass"],
   "devDependencies": {
     "babel-core": "^6.14.0",
     "babel-preset-es2015": "^6.14.0",

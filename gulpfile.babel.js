@@ -5,7 +5,7 @@ import rename from 'gulp-rename'
 import bs from 'browser-sync'
 
 const sassFiles = './src/*.scss';
-const distRoot = './dist/';
+const docsDir = './docs';
 
 // development watch mode with local server and auto-reloading browsers
 gulp.task('default', () => {
@@ -13,11 +13,11 @@ gulp.task('default', () => {
   browserSync.init({
     notify: false,
     server: {
-      baseDir: distRoot
+      baseDir: docsDir
     }
   });
   gulp.watch(sassFiles, ['sass']);
-  gulp.watch(['**/*.html', '**/*.css'], {cwd: distRoot}).on('change', browserSync.reload);
+  gulp.watch(['**/*.html', '**/*.css'], {cwd: docsDir}).on('change', browserSync.reload);
 });
 
 // compile sass + autoprefixer
@@ -29,5 +29,5 @@ gulp.task('sass', function () {
       cascade: false
     }))
     .pipe(rename({extname: '.min.css'}))
-    .pipe(gulp.dest(distRoot));
+    .pipe(gulp.dest(file => file.base));
 });
