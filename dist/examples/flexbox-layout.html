@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flexbox - layout with fixed header, sidebar and scrollable content area</title>
+  <link rel="stylesheet" href="../flexbox.min.css"/>
+  <link rel="stylesheet" href="./common.css"/>
+  <style type="text/css">
+    main {
+      overflow: hidden;
+    }
+    header {
+      background: greenyellow;
+      padding: 1rem;
+    }
+    aside {
+      position: relative;
+      background: silver;
+      padding: 1rem;
+    }
+    aside:after {
+      content: "Logo";
+      position: absolute;
+      left: 50%;
+      bottom: 1rem;
+      margin-left: -25px;
+      width: 50px;
+      height: 50px;
+      line-height: 47px;
+      text-align: center;
+      border-radius: 50%;
+      border: 1px solid black;
+      background: black;
+      color: white;
+    }
+    article {
+      overflow: auto;
+      width: 100%;
+      padding: 2rem;
+    }
+  </style>
+</head>
+<body>
+
+<main class="flex fullsize-fixed">
+  <aside class="box">Sidebar</aside>
+  <section class="box grow flex column">
+    <header class="box noshrink">Header</header>
+    <article class="box grow">
+      Main content area
+      <p>
+        1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>
+        1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>
+        1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>
+        1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>
+      </p>
+      END
+    </article>
+  </section>
+</main>
+
+</body>
+</html>

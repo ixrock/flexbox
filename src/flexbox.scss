@@ -1,0 +1,134 @@
+//-- Flexbox layout
+// Cheat sheet: http://jonibologna.com/content/images/flexboxsheet.pdf
+// Solutions: https://philipwalton.github.io/solved-by-flexbox/
+
+$flexbox-grids: 12 !default;
+$flexbox-gap-size: 1rem;
+
+.flex {
+  display: flex;
+
+  &.fullsize {
+    min-width: 100vw;
+    min-height: 100vh;
+    &-fixed {
+      width: 100vw;
+      height: 100vh;
+    }
+  }
+
+  &.column {
+    flex-direction: column;
+    &.reverse {
+      flex-direction: column-reverse;
+    }
+  }
+
+  &.reverse {
+    flex-direction: row-reverse;
+  }
+
+  &.wrap {
+    flex-wrap: wrap;
+    &-reverse {
+      flex-wrap: wrap-reverse;
+    }
+  }
+
+  &.auto {
+    > .box {
+      flex: 1 0 auto;
+    }
+  }
+
+  &.center {
+    > * {
+      margin: auto;
+    }
+  }
+
+  &.gaps {
+    &.column {
+      > .box:not(:last-of-type) {
+        margin-bottom: $flexbox-gap-size;
+      }
+    }
+    &:not(.column) {
+      > .box:not(:last-of-type) {
+        margin-right: $flexbox-gap-size;
+      }
+    }
+  }
+
+  $flex: flex-start flex-end center;
+  $space: space-around space-between;
+  $stretch: stretch;
+  $justifyContent: join($flex, space-around space-between);
+  $alignContent: join($justifyContent, $stretch);
+  $alignItems: join($flex, $stretch baseline);
+  $margins: top right bottom left;
+
+  // align items in x-axis for flex=row (default) and in y-axis when flex=column mode
+  @each $mod in $justifyContent {
+    &.justify-#{$mod} {
+      justify-content: $mod;
+    }
+  }
+
+  // opposite to .justify-*, but has a bit different values
+  @each $mod in $alignItems {
+    &.align-#{$mod} {
+      align-items: $mod;
+    }
+  }
+  @each $mod in $alignContent {
+    &.content-#{$mod} {
+      align-content: $mod;
+    }
+  }
+
+  // generate grid columns
+  $grid: 1;
+
+  @while $grid <= $flexbox-grids {
+    $col: 1;
+
+    @while $col <= $grid {
+      $id: #{$col + '-'+ $grid};
+      $size: #{$col / $grid * 100 + '%'};
+
+      &.cols-#{$id} > *,
+      > .col-#{$id} {
+        flex-basis: $size;
+      }
+
+      $col: $col + 1;
+    }
+    $grid: $grid + 1;
+  }
+
+  // children
+  > .box {
+    &.first {
+      order: -1;
+    }
+    &.grow {
+      flex-grow: 1;
+    }
+    &.noshrink {
+      flex-shrink: 0;
+    }
+
+    @each $margin in $margins {
+      &.#{$margin} {
+        margin-#{$margin}: 0;
+      }
+    }
+
+    @each $mod in append($alignItems, auto) {
+      &.#{$mod} {
+        align-self: $mod;
+      }
+    }
+  }
+}

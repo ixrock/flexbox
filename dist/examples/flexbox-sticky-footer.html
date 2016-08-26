@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flexbox - sticky footer</title>
+  <link rel="stylesheet" href="../flexbox.min.css"/>
+  <link rel="stylesheet" href="./common.css"/>
+  <style type="text/css">
+    article {
+      background: lightyellow;
+      padding: 2rem;
+    }
+    footer {
+      background: dimgray;
+      color: white;
+      padding: 1rem;
+    }
+  </style>
+</head>
+<body>
+
+<main class="flex column fullsize">
+  <article class="box grow">
+    Main content
+    <p><a href="#" onclick="extra.hidden = !extra.hidden; return false">Show/hide scrollbar</a></p>
+    <p id="extra" hidden>
+      1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>
+      1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>
+      1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>
+      1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>
+      END
+    </p>
+  </article>
+  <footer class="box">Sticky footer with auto-height depending on contents</footer>
+</main>
+
+</body>
+</html>
