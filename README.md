@@ -20,4 +20,4 @@ Learn flex boxes as is: classes just reflects css-properties!
 ```
 
 ## API docs and live examples
-https://ixrock.github.io/flex.box/docs/
+https://ixrock.github.io/flexbox/docs/

@@ -1,11 +1,19 @@
 {
   "name": "flex.box",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "CSS library for easier work with flex boxes",
   "main": "src/flexbox.scss",
   "author": "ixrock",
   "license": "MIT",
   "keywords": ["flexbox", "css", "sass"],
+  "homepage": "https://github.com/ixrock/flexbox",
+  "scripts": {
+    "dev": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ixrock/flexbox.git"
+  },
   "devDependencies": {
     "babel-core": "^6.14.0",
     "babel-preset-es2015": "^6.14.0",
