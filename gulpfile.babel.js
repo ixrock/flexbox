@@ -12,9 +12,8 @@ gulp.task('default', () => {
   var browserSync = bs.create();
   browserSync.init({
     notify: false,
-    server: {
-      baseDir: docsDir
-    }
+    startPath: docsDir,
+    server: './'
   });
   gulp.watch(sassFiles, ['sass']);
   gulp.watch(['**/*.html', '**/*.css'], {cwd: docsDir}).on('change', browserSync.reload);
