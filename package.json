@@ -1,6 +1,6 @@
 {
   "name": "flex.box",
-  "version": "1.0.1",
+  "version": "1.1.0",
   "description": "CSS library for easier work with flex boxes",
   "main": "src/flexbox.scss",
   "author": "ixrock",
@@ -8,7 +8,7 @@
   "keywords": ["flexbox", "css", "sass"],
   "homepage": "https://github.com/ixrock/flexbox",
   "scripts": {
-    "dev": "gulp"
+    "start": "gulp"
   },
   "repository": {
     "type": "git",

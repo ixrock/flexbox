@@ -4,8 +4,9 @@ import sass from 'gulp-sass'
 import rename from 'gulp-rename'
 import bs from 'browser-sync'
 
-const sassFiles = './src/*.scss';
-const docsDir = './docs';
+const srcDir = './src/';
+const docsDir = './docs/';
+const sassFiles = srcDir + '**/*.scss';
 
 // development watch mode with local server and auto-reloading browsers
 gulp.task('default', () => {
@@ -16,17 +17,18 @@ gulp.task('default', () => {
     server: './'
   });
   gulp.watch(sassFiles, ['sass']);
-  gulp.watch(['**/*.html', '**/*.css'], {cwd: docsDir}).on('change', browserSync.reload);
+  gulp.watch([
+    docsDir + '**/*.html',
+    docsDir + '**/*.css',
+    srcDir + '*.css'
+  ]).on('change', browserSync.reload);
 });
 
 // compile sass + autoprefixer
 gulp.task('sass', function () {
   return gulp.src(sassFiles)
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-    .pipe(autoprefixer({
-      browsers: ['last 2 versions'],
-      cascade: false
-    }))
+    .pipe(autoprefixer({browsers: ['last 2 versions'], cascade: false}))
     .pipe(rename({extname: '.min.css'}))
     .pipe(gulp.dest(file => file.base));
 });

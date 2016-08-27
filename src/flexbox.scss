@@ -34,7 +34,7 @@ $flexbox-gap-size: 1rem;
   }
 
   &.auto {
-    > .box {
+    > * {
       flex: 1 0 auto;
     }
   }
@@ -47,12 +47,12 @@ $flexbox-gap-size: 1rem;
 
   &.gaps {
     &.column {
-      > .box:not(:last-of-type) {
+      > :not(:last-of-type) {
         margin-bottom: $flexbox-gap-size;
       }
     }
     &:not(.column) {
-      > .box:not(:last-of-type) {
+      > :not(:last-of-type) {
         margin-right: $flexbox-gap-size;
       }
     }
@@ -85,24 +85,51 @@ $flexbox-gap-size: 1rem;
     }
   }
 
-  // generate grid columns
+  // generating grids pre-calculations
   $grid: 1;
+  $grids: ();
+  $columns: ();
 
   @while $grid <= $flexbox-grids {
     $col: 1;
+    $grids: map_merge($grids, ($grid: unquote(1 / $grid * 100 + '%')));
 
     @while $col <= $grid {
-      $id: #{$col + '-'+ $grid};
       $size: #{$col / $grid * 100 + '%'};
+      $selector: unquote("> .col-#{$col}-#{$grid}");
 
-      &.cols-#{$id} > *,
-      > .col-#{$id} {
-        flex-basis: $size;
+      @if(map_has_key($columns, $size)) {
+        $columns: map_merge($columns, ($size: append(map_get($columns, $size), $selector, 'comma')));
+      } @else  {
+        $columns: map_merge($columns, ($size: $selector))
       }
-
       $col: $col + 1;
     }
     $grid: $grid + 1;
+  }
+
+  // generate grids
+  @each $grid, $size in $grids {
+    &.grid-#{$grid} {
+      > * {
+        flex-basis: $size;
+      }
+      &.gaps > * {
+        flex-basis: calc(#{$size} - #{$flexbox-gap-size});
+      }
+    }
+  }
+
+  // generate columns
+  @each $size, $selector in $columns {
+    &#{$selector} {
+      flex-basis: $size;
+    }
+    &.gaps {
+      &#{$selector} {
+        flex-basis: calc(#{$size} - #{$flexbox-gap-size});
+      }
+    }
   }
 
   // children
@@ -116,14 +143,20 @@ $flexbox-gap-size: 1rem;
     &.noshrink {
       flex-shrink: 0;
     }
+    &.auto {
+      margin: auto;
+    }
 
     @each $margin in $margins {
+      &[class*="auto-"][class*="-#{$margin}"] {
+        margin-#{$margin}: auto;
+      }
       &.#{$margin} {
         margin-#{$margin}: 0;
       }
     }
 
-    @each $mod in append($alignItems, auto) {
+    @each $mod in $alignItems {
       &.#{$mod} {
         align-self: $mod;
       }
