@@ -38,8 +38,8 @@
     <b>align-content:</b> use one of property modifiers (ex. <code>content-flex-start</code>)
     [<code>.content-</code>(<code>flex-start|center|flex-end|space-around|space-between|stretch</code>)]
 
-    <b>grid</b>: set up <var>flex-basis</var> for all children (ex. <code>grid-10</code>)
-    [<code>.grid-</code>(1-12)]
+    <b>grid</b>: set up <var>flex-basis</var> for all children (ex. <code>grid10</code>)
+    [<code>.grid</code>(1-12)]
   </div>
 
   <h3>Children:</h3>
@@ -55,9 +55,9 @@
     <b>margin</b>: offsets magic allows to create auto-spacing in flow with <var>.box</var> siblings
     [<code>.auto</code>[<code>.top</code>][<code>.bottom</code>][<code>.left</code>][<code>.right</code>]]
 
-    <b>columns</b>: set up <var>flex-basis</var> for the child (ex. <code>.col-1-2</code> = <code>.col-2-4</code> = 50%)
+    <b>columns</b>: set up <var>flex-basis</var> for the child (ex. <code>.col3</code>)
     warning: not working correctly with <code>.flex.gaps</code> if you need gaps in that case create them manually inside <var>.box</var> at child elements
-    [<code>.col-</code>N-M] where N<=M && N=M=1-12, overrides value from parent <var>.flex.grid-*</var>
+    [<code>.col</code>(1-12)] overrides value from parent <var>.flex.grid*</var>
   </div>
 
   <h2>Examples</h2>

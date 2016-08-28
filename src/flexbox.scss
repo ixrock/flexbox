@@ -78,11 +78,13 @@ $flexbox-gap-size: 1rem !default;
 
   @while $grid <= $flexbox-grids {
     $col: 1;
-    $grids: map_merge($grids, ($grid: 1 / $grid * 100%));
+    $grid-selector: unquote('.grid#{$grid}');
+    $grid-size: 1 / $grid * 100%;
+    $grids: map_merge($grids, ($grid: ($grid-selector $grid-size)));
 
     @while $col <= $grid {
       $size: #{$col / $grid * 100 + '%'};
-      $selector: unquote("> .col-#{$col}-#{$grid}");
+      $selector: unquote("#{$grid-selector} > .col#{$col}");
 
       @if(map_has_key($columns, $size)) {
         $columns: map_merge($columns, ($size: append(map_get($columns, $size), $selector, 'comma')));
@@ -109,10 +111,12 @@ $flexbox-gap-size: 1rem !default;
 
   // generate grids
   $grid-gap-size: $flexbox-gap-size / 2;
-  @each $grid, $size in $grids {
+  @each $grid, $grid-params in $grids {
+    $selector: nth($grid-params, 1);
+    $size: nth($grid-params, 2);
     $flex-basis-offset: ($grid - 1) / $grid * $flexbox-gap-size;
 
-    &.grid-#{$grid} {
+    &#{$selector} {
       > * {
         flex-basis: $size;
       }
