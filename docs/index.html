@@ -21,13 +21,13 @@
 
   <h3>Container:</h3>
   <div class="code"><code>.flex</code>
-    [<code>.auto</code>] = set up equal <var>flex-basis: 1</var> for all <var>.box</var> children, so they will grab all possible space from parent flex container
+    [<code>.auto</code>] = set up equal <var>flex-grow: 1</var> for all <var>.box</var> children, so they will grab all possible space from parent flex container
     [<code>.reverse</code>] = change the order of flex children
     [<code>.column</code>[<code>.reverse</code>]] = change flex flow direction from <var>row</var> (default) to <var>column</var>
-    [<code>.wrap[-reverse]</code>] = allow flex children go to next line if they're not fitting (their width/height must be defined)
+    [<code>.wrap</code>[<code>-reverse</code>]] = allow flex children go to the next line if they're not fitting
     [<code>.center</code>] = vertically and horizontally centering children (magic trick with <var>margin: auto</var>)
-    [<code>.fullsize</code>[<code>-fixed</code>]] = adds <var>[min-]width</var> and <var>[min-]height</var> equals to viewport size (<var>100vw/vh</var>)
-    [<code>.gaps</code>] = adds a gap between <var>.box</var> children, default value = 1rem
+    [<code>.fullsize</code>[<code>-fixed</code>]] = set up <var>min-width/width</var> and <var>min-height/height</var> equals to viewport size
+    [<code>.gaps</code>] = adds a gap between children <var>.box</var> elements, by default = 1rem
 
     <b>justify-content:</b> use one of the property modifiers (ex. <code>justify-center</code>)
     [<code>.justify-</code>(<code>flex-start|center|flex-end|space-around|space-between</code>)]
@@ -39,25 +39,25 @@
     [<code>.content-</code>(<code>flex-start|center|flex-end|space-around|space-between|stretch</code>)]
 
     <b>grid</b>: set up <var>flex-basis</var> for all children (ex. <code>grid10</code>)
-    [<code>.grid</code>(1-12)]
+    [<code>.grid</code>(<code>1-12</code>)]
   </div>
 
   <h3>Children:</h3>
   <div class="code"><code>.flex > .box</code>
     [<code>.first</code>] = put element to the start (<var>order: -1</var>)
     [<code>.last</code>] = put element to the end (<var>order: 1</var>)
-    [<code>.grow</code>] = allow a flex child to grow and take all free space in flex container
-    [<code>.noshrink</code>] = don't allow to the flex child reduce its size, might be useful when sibling children have <code>.grow</code> class
+    [<code>.grow</code>] = allow a flex child to grow and grab all possible free space in the flex container flow
+    [<code>.noshrink</code>] = don't allow to the flex child reduce its size, might be useful sometimes when sibling children have <code>.grow</code>
 
     <b>align-self:</b> use one of property modifiers
     [<code>.flex-start</code>][<code>.center</code>][<code>.flex-end</code>][<code>.stretch</code>][<code>.baseline</code>]
 
-    <b>margin</b>: offsets magic allows to create auto-spacing in flow with <var>.box</var> siblings
+    <b>margin</b> magic creates offsets/auto-spacing in flow with other <var>.box</var> siblings
     [<code>.auto</code>[<code>.top</code>][<code>.bottom</code>][<code>.left</code>][<code>.right</code>]]
 
     <b>columns</b>: set up <var>flex-basis</var> for the child (ex. <code>.col3</code>)
     warning: not working correctly with <code>.flex.gaps</code> if you need gaps in that case create them manually inside <var>.box</var> at child elements
-    [<code>.col</code>(1-12)] overrides value from parent <var>.flex.grid*</var>
+    [<code>.col</code>(<code>1-12</code>)] overrides value from parent <var>.flex.grid*</var>
   </div>
 
   <h2>Examples</h2>
