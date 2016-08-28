@@ -8,7 +8,6 @@
     main {
       margin: 1rem;
       padding: 1rem;
-      padding-right: 0;
     }
 
     .flex {
@@ -44,13 +43,17 @@
 <body>
 
 <main class="flex wrap gaps grid-2">
-  <div class="flex">
+  <div class="flex gaps auto">
+    <div class="box"></div>
+    <div class="box"></div>
     <div class="box"></div>
     <div class="box"></div>
     <div class="box"></div>
   </div>
 
-  <div class="flex auto">
+  <div class="flex gaps">
+    <div class="box"></div>
+    <div class="box grow"></div>
     <div class="box"></div>
     <div class="box"></div>
     <div class="box"></div>
@@ -68,26 +71,19 @@
     <div class="box"></div>
   </div>
 
-  <div class="flex gaps">
+  <div class="flex grid-8 gaps">
     <div class="box"></div>
-    <div class="box grow"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-  </div>
-
-  <div class="flex gaps auto">
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
+    <div class="box col-2-8"></div>
+    <div class="box col-3-8"></div>
     <div class="box"></div>
     <div class="box"></div>
   </div>
 
-  <div class="flex grid-8">
+  <div class="flex grid-4 gaps wrap">
     <div class="box"></div>
-    <div class="box col-2-8" style="background: #eee"></div>
-    <div class="box col-3-8" style="background: #ddd"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
     <div class="box"></div>
     <div class="box"></div>
   </div>
@@ -116,6 +112,12 @@
     <div class="box"></div>
     <div class="box auto"></div>
     <div class="box"></div>
+  </div>
+
+  <div class="flex">
+    <div class="box auto-left-top"></div>
+    <div class="box auto"></div>
+    <div class="box auto-right-top"></div>
   </div>
 
   <div class="flex center">

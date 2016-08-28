@@ -1,7 +1,7 @@
 //-- Flexbox
 
 $flexbox-grids: 12 !default;
-$flexbox-gap-size: 1rem;
+$flexbox-gap-size: 1rem !default;
 
 .flex {
   display: flex;
@@ -45,19 +45,6 @@ $flexbox-gap-size: 1rem;
     }
   }
 
-  &.gaps {
-    &.column {
-      > :not(:last-of-type) {
-        margin-bottom: $flexbox-gap-size;
-      }
-    }
-    &:not(.column) {
-      > :not(:last-of-type) {
-        margin-right: $flexbox-gap-size;
-      }
-    }
-  }
-
   $flex: flex-start flex-end center;
   $space: space-around space-between;
   $stretch: stretch;
@@ -85,14 +72,13 @@ $flexbox-gap-size: 1rem;
     }
   }
 
-  // generating grids pre-calculations
   $grid: 1;
   $grids: ();
   $columns: ();
 
   @while $grid <= $flexbox-grids {
     $col: 1;
-    $grids: map_merge($grids, ($grid: unquote(1 / $grid * 100 + '%')));
+    $grids: map_merge($grids, ($grid: 1 / $grid * 100%));
 
     @while $col <= $grid {
       $size: #{$col / $grid * 100 + '%'};
@@ -108,14 +94,48 @@ $flexbox-gap-size: 1rem;
     $grid: $grid + 1;
   }
 
+  &.gaps {
+    &:not(.column) {
+      > :not(:last-of-type) {
+        margin-right: $flexbox-gap-size;
+      }
+    }
+    &.column {
+      > :not(:last-of-type) {
+        margin-bottom: $flexbox-gap-size;
+      }
+    }
+  }
+
   // generate grids
+  $grid-gap-size: $flexbox-gap-size / 2;
   @each $grid, $size in $grids {
+    $flex-basis-offset: ($grid - 1) / $grid * $flexbox-gap-size;
+
     &.grid-#{$grid} {
       > * {
         flex-basis: $size;
       }
-      &.gaps > * {
-        flex-basis: calc(#{$size} - #{$flexbox-gap-size});
+      &.gaps {
+        > {
+          * {
+            flex-basis: calc(#{$size} - #{$flex-basis-offset});
+          }
+          :not(:first-of-type) {
+            margin-left: $grid-gap-size;
+          }
+          :not(:last-of-type) {
+            margin-right: $grid-gap-size;
+          }
+        }
+        &.wrap > {
+          :nth-child(#{$grid}n) {
+            margin-right: 0;
+          }
+          :nth-child(#{$grid}n+1) {
+            margin-left: 0;
+          }
+        }
       }
     }
   }
@@ -123,12 +143,7 @@ $flexbox-gap-size: 1rem;
   // generate columns
   @each $size, $selector in $columns {
     &#{$selector} {
-      flex-basis: $size;
-    }
-    &.gaps {
-      &#{$selector} {
-        flex-basis: calc(#{$size} - #{$flexbox-gap-size});
-      }
+      flex-basis: $size !important;
     }
   }
 
