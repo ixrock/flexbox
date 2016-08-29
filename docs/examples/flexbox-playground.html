@@ -13,7 +13,7 @@
     .flex {
       min-height: 150px;
       border: 1px solid black;
-      margin-top: 50px;
+      margin-top: 50px !important;
       position: relative;
     }
 
@@ -21,7 +21,7 @@
       content: 'class="' attr(class) '"';
       position: absolute;
       left: -1px;
-      bottom: 100%;
+      bottom: calc(100% + 1px);
       background: black;
       color: white;
       padding: .5rem;
@@ -80,6 +80,10 @@
   </div>
 
   <div class="flex grid4 gaps wrap">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
     <div class="box"></div>
     <div class="box"></div>
     <div class="box"></div>

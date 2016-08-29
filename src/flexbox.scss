@@ -132,12 +132,26 @@ $flexbox-gap-size: 1rem !default;
             margin-right: $grid-gap-size;
           }
         }
-        &.wrap > {
-          :nth-child(#{$grid}n) {
-            margin-right: 0;
+        &.wrap {
+          > {
+            :nth-child(#{$grid}n) {
+              margin-right: 0;
+            }
+            :nth-child(#{$grid}n+1) {
+              margin-left: 0;
+            }
           }
-          :nth-child(#{$grid}n+1) {
-            margin-left: 0;
+          // add horizontal gaps in multi-line flex-container
+          &:not(.column) > {
+            :nth-child(n+#{$grid+1}) {
+              margin-top: $flexbox-gap-size;
+            }
+          }
+          // add vertical gaps in multi-line flex-container
+          &.column > {
+            :nth-child(n+#{$grid+1}) {
+              margin-left: $flexbox-gap-size;
+            }
           }
         }
       }
@@ -147,7 +161,7 @@ $flexbox-gap-size: 1rem !default;
   // generate columns
   @each $size, $selector in $columns {
     &#{$selector} {
-      flex-basis: $size !important;
+      flex-basis: $size;
     }
   }
 
