@@ -52,8 +52,10 @@
     <b>align-self:</b> use one of property modifiers
     [<code>.flex-start</code>][<code>.center</code>][<code>.flex-end</code>][<code>.stretch</code>][<code>.baseline</code>]
 
-    <b>margin</b> magic creates offsets/auto-spacing in flow with other <var>.box</var> siblings
-    [<code>.auto</code>[<code>.top</code>][<code>.bottom</code>][<code>.left</code>][<code>.right</code>]]
+    <b>margin</b>: <var>auto</var> creates magical auto-spacing/offsets
+    [<code>.auto</code>[<code>.top</code>][<code>.bottom</code>][<code>.left</code>][<code>.right</code>]] (ex. <code>.auto.top.bottom</code>)
+    [<code>.auto</code>[<code>-left-right-top-bottom</code>]] (ex. <code>.auto</code> all sides, <code>.auto-left-right</code> only left and right)
+    note: <code>.auto.top.left</code> not the same as <code>.auto-top-left</code> which is actually opposite, i.e. <code>.auto.right.bottom</code>
 
     <b>columns</b>: set up <var>flex-basis</var> for the child (ex. <code>.col3</code>)
     warning: not working correctly with <code>.flex.gaps</code> if you need gaps in that case create them manually inside <var>.box</var> at child elements

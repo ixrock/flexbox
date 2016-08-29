@@ -170,6 +170,9 @@ $flexbox-gap-size: 1rem !default;
     }
 
     @each $margin in $margins {
+      &[class*="auto-"][class*="-#{$margin}"] {
+        margin-#{$margin}: auto;
+      }
       &.#{$margin} {
         margin-#{$margin}: 0;
       }

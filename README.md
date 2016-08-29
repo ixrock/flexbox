@@ -15,7 +15,7 @@ Learn flex boxes as is: classes just reflects css-properties!
 .flex > .box
       [.first.last.grow.noshrink]
       [.flex-start.center.flex-end.stretch.baseline]  /** align-self **/
-      [.auto[.top.bottom.left.right]]  /** margin **/
+      [.auto[.top.bottom.left.right][-left-right-top-bottom]]  /** margin **/
       [.col(1-12)] /** flex-basis **/
 ```
 
