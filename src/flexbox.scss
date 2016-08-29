@@ -6,6 +6,10 @@ $flexbox-gap-size: 1rem !default;
 .flex {
   display: flex;
 
+  &.inline {
+    display: inline-flex;
+  }
+
   &.fullsize {
     min-width: 100vw;
     min-height: 100vh;
