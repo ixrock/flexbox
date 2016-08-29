@@ -76,24 +76,25 @@ $flexbox-gap-size: 1rem !default;
     }
   }
 
-  $grid: 1;
+  // grid pre-calculations
   $grids: ();
   $columns: ();
+  $grid: 2;
 
   @while $grid <= $flexbox-grids {
-    $col: 1;
-    $grid-selector: unquote('.grid#{$grid}');
+    $col: 2;
     $grid-size: 1 / $grid * 100%;
+    $grid-selector: selector_append(&, ".grid#{$grid}");
     $grids: map_merge($grids, ($grid: ($grid-selector $grid-size)));
 
     @while $col <= $grid {
       $size: #{$col / $grid * 100 + '%'};
-      $selector: unquote("#{$grid-selector} > .col#{$col}");
+      $col-selector: unquote("#{$grid-selector} > .col#{$col}");
 
       @if(map_has_key($columns, $size)) {
-        $columns: map_merge($columns, ($size: append(map_get($columns, $size), $selector, 'comma')));
+        $columns: map_merge($columns, ($size: append(map_get($columns, $size), $col-selector, 'comma')));
       } @else  {
-        $columns: map_merge($columns, ($size: $selector))
+        $columns: map_merge($columns, ($size: $col-selector));
       }
       $col: $col + 1;
     }
@@ -111,16 +112,28 @@ $flexbox-gap-size: 1rem !default;
         margin-bottom: $flexbox-gap-size;
       }
     }
+    &-unordered-cols {
+      padding-left: $flexbox-gap-size;
+      padding-top: $flexbox-gap-size;
+      > .box {
+        padding-right: $flexbox-gap-size;
+        padding-bottom: $flexbox-gap-size;
+        > :first-child, &:after, &:before {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
   }
 
   // generate grids
-  $grid-gap-size: $flexbox-gap-size / 2;
   @each $grid, $grid-params in $grids {
     $selector: nth($grid-params, 1);
     $size: nth($grid-params, 2);
     $flex-basis-offset: ($grid - 1) / $grid * $flexbox-gap-size;
 
-    &#{$selector} {
+    @at-root #{$selector} {
       > * {
         flex-basis: $size;
       }
@@ -130,10 +143,10 @@ $flexbox-gap-size: 1rem !default;
             flex-basis: calc(#{$size} - #{$flex-basis-offset});
           }
           :not(:first-of-type) {
-            margin-left: $grid-gap-size;
+            margin-left: $flexbox-gap-size / 2;
           }
           :not(:last-of-type) {
-            margin-right: $grid-gap-size;
+            margin-right: $flexbox-gap-size / 2;
           }
         }
         &.wrap {
@@ -164,7 +177,7 @@ $flexbox-gap-size: 1rem !default;
 
   // generate columns
   @each $size, $selector in $columns {
-    &#{$selector} {
+    @at-root #{$selector} {
       flex-basis: $size;
     }
   }

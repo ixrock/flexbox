@@ -11,12 +11,12 @@ Learn flex boxes as is: classes just reflects css-properties!
      [.justify-(flex-start|center|flex-end|space-around|space-between)] /** justify-content **/
      [.align-(flex-start|center|flex-end|stretch|baseline)] /** align-items **/
      [.content-(flex-start|center|flex-end|space-around|space-between|stretch)] /** align-content **/
-     [.grid(1-12)] /** flex-basis **/
+     [.grid(2-12)] /** flex-basis **/
 .flex > .box
       [.first.last.grow.noshrink]
       [.flex-start.center.flex-end.stretch.baseline]  /** align-self **/
       [.auto[.top.bottom.left.right][-left-right-top-bottom]]  /** margin **/
-      [.col(1-12)] /** flex-basis **/
+      [.col(2-12)] /** flex-basis **/
 ```
 
 ## API docs and live examples

@@ -29,7 +29,8 @@
       border-top-right-radius: 5px;
     }
 
-    .box {
+    .flex:not(.gaps-unordered-cols) > .box,
+    .gaps-unordered-cols > .box:after {
       background: silver;
       text-align: center;
       padding: 5px;
@@ -71,25 +72,28 @@
     <div class="box"></div>
   </div>
 
-  <div class="flex grid8 gaps">
+  <div class="flex wrap grid5 gaps">
     <div class="box"></div>
-    <div class="box col2"></div>
-    <div class="box col3"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
     <div class="box"></div>
     <div class="box"></div>
   </div>
 
-  <div class="flex grid4 gaps wrap">
+  <div class="flex wrap grid4 gaps-unordered-cols">
     <div class="box"></div>
     <div class="box"></div>
     <div class="box"></div>
     <div class="box"></div>
+    <div class="box col2"></div>
     <div class="box"></div>
     <div class="box"></div>
+    <div class="box col3"></div>
     <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
+    <div class="box col4"></div>
   </div>
 
   <div class="flex center">
