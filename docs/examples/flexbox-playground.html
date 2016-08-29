@@ -8,12 +8,13 @@
     main {
       margin: 1rem;
       padding: 1rem;
+      padding-top: 0;
     }
 
     .flex {
       min-height: 150px;
       border: 1px solid black;
-      margin-top: 50px !important;
+      margin-top: 40px !important;
       position: relative;
     }
 
@@ -22,11 +23,9 @@
       position: absolute;
       left: -1px;
       bottom: calc(100% + 1px);
-      background: black;
+      background: rgba(0, 0, 0, .75);
       color: white;
       padding: .5rem;
-      border-top-left-radius: 5px;
-      border-top-right-radius: 5px;
     }
 
     .flex:not(.gaps-unordered-cols) > .box,

@@ -136,6 +136,7 @@ $flexbox-gap-size: 1rem !default;
     @at-root #{$selector} {
       > * {
         flex-basis: $size;
+        min-width: 0;
       }
       &.gaps {
         > {
