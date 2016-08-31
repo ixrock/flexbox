@@ -1,0 +1,101 @@
+//-- Flexbox grid
+
+$flexbox-grids: 12 !default;
+
+.flex {
+  $grids: ();
+  $columns: ();
+  $grid: 2;
+
+  @while $grid <= $flexbox-grids {
+    $col: 2;
+    $grid-size: 1 / $grid * 100%;
+    $grid-selector: selector_append(&, ".grid#{$grid}");
+    $grids: map_merge($grids, ($grid: ($grid-selector $grid-size)));
+
+    @while $col <= $grid {
+      $size: #{$col / $grid * 100 + '%'};
+      $col-selector: unquote("#{$grid-selector} > .col#{$col}");
+
+      @if(map_has_key($columns, $size)) {
+        $columns: map_merge($columns, ($size: append(map_get($columns, $size), $col-selector, 'comma')));
+      } @else  {
+        $columns: map_merge($columns, ($size: $col-selector));
+      }
+      $col: $col + 1;
+    }
+    $grid: $grid + 1;
+  }
+
+  &.gaps {
+    &-unordered-cols {
+      padding-left: $flexbox-gap-size;
+      padding-top: $flexbox-gap-size;
+      > .box {
+        padding-right: $flexbox-gap-size;
+        padding-bottom: $flexbox-gap-size;
+        > :first-child, &:after, &:before {
+          display: block;
+          width: 100%;
+          height: 100%;
+        }
+      }
+    }
+  }
+
+  // generate grids
+  @each $grid, $grid-params in $grids {
+    $selector: nth($grid-params, 1);
+    $size: nth($grid-params, 2);
+    $flex-basis-offset: ($grid - 1) / $grid * $flexbox-gap-size;
+
+    @at-root #{$selector} {
+      > * {
+        flex-basis: $size;
+        min-width: 0;
+      }
+      &.gaps {
+        > {
+          * {
+            flex-basis: calc(#{$size} - #{$flex-basis-offset});
+          }
+          :not(:first-of-type) {
+            margin-left: $flexbox-gap-size / 2;
+          }
+          :not(:last-of-type) {
+            margin-right: $flexbox-gap-size / 2;
+          }
+        }
+        &.wrap {
+          > {
+            :nth-child(#{$grid}n) {
+              margin-right: 0;
+            }
+            :nth-child(#{$grid}n+1) {
+              margin-left: 0;
+            }
+          }
+          // add horizontal gaps in multi-line flex-container
+          &:not(.column) > {
+            :nth-child(n+#{$grid+1}) {
+              margin-top: $flexbox-gap-size;
+            }
+          }
+          // add vertical gaps in multi-line flex-container
+          &.column > {
+            :nth-child(n+#{$grid+1}) {
+              margin-left: $flexbox-gap-size;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  // generate columns
+  @each $size, $selector in $columns {
+    @at-root #{$selector} {
+      flex-basis: $size;
+    }
+  }
+}

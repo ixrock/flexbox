@@ -1,5 +1,5 @@
 @import "https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css";
-@import "../src/flexbox.min.css";
+@import "../src/flexbox.css";
 
 *, *:before, *:after {
     box-sizing: border-box;
