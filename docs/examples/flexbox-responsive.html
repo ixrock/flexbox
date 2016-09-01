@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Flexbox - playground</title>
+  <title>Flexbox - responsive media breakpoints</title>
   <link rel="stylesheet" href="../common.css"/>
   <style type="text/css">
     .flex {
@@ -13,40 +13,41 @@
     .box {
       padding-right: 1rem;
       padding-bottom: 1rem;
+      display: flex;
     }
     .box:after {
+      padding: 5px;
       background: silver;
       text-align: center;
       content: attr(class);
       display: block;
       width: 100%;
-      height: 100%;
     }
   </style>
 </head>
 <body>
 
-<div class="flex wrap grid5">
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
-  <div class="box"></div>
+<div class="flex wrap grid10">
+  <div class="box lg2 md5 xs10"></div>
+  <div class="box lg2 md5 xs10"></div>
+  <div class="box lg2 md5 xs10"></div>
+  <div class="box lg2 md5 xs10"></div>
+  <div class="box lg2 md5 xs10"></div>
+  <div class="box lg2 md5 xs10"></div>
+  <div class="box lg2 md5 xs10"></div>
+  <div class="box lg2 md5 xs10"></div>
+  <div class="box lg2 md5 xs10"></div>
+  <div class="box lg2 md5 xs10"></div>
+  <div class="box md2 xs5"></div>
+  <div class="box md2 xs5"></div>
+  <div class="box md2 xs5"></div>
+  <div class="box md2 xs5"></div>
+  <div class="box md2 xs5"></div>
+  <div class="box md2 xs5"></div>
+  <div class="box md2 xs5"></div>
+  <div class="box md2 xs5"></div>
+  <div class="box md2 xs5"></div>
+  <div class="box md2 xs5"></div>
 </div>
 
 </body>

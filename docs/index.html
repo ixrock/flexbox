@@ -40,7 +40,7 @@
     [<code>.content-</code>(<code>flex-start|center|flex-end|space-around|space-between|stretch</code>)]
 
     <b>grid</b>: set up <var>flex-basis</var> for all children (ex. <code>grid10</code>)
-    [<code>.grid</code>(<code>2-12</code>)]
+    [<code>.grid</code>(<code>2-10</code>)]
   </div>
 
   <h3>Children:</h3>
@@ -59,9 +59,15 @@
     note: <code>.auto.top.left</code> not the same as <code>.auto-top-left</code> which is actually opposite, i.e. <code>.auto.right.bottom</code>
 
     <b>columns</b>: set up <var>flex-basis</var> for the child (ex. <code>.col3</code>)
-    [<code>.col</code>(<code>2-12</code>)] overrides value from parent <var>.flex.grid*</var>
-    warning: not working correctly with <code>.flex.gaps</code>
+    [<code>.col</code>(<code>2-10</code>)] overrides value from parent <var>.flex.grid*</var>, not working correctly with <code>.flex.gaps</code>
     create gaps manually with <var>border</var> or <var>padding</var> at <code>.box</code> elements and negative <var>margin</var> at <code>.flex</code> container
+
+    <b>media breakpoints</b>: use these with <code>.flex.grid*</code> to adjust size of columns for different viewport size
+    [<code>.xs(2-10)</code>] - extra small, up to 600px by default
+    [<code>.sm(2-10)</code>] - small, up to 840px by default
+    [<code>.md(2-10)</code>] - medium, up to 960px by default
+    [<code>.lg(2-10)</code>] - large, up to 1280px by default
+    [<code>.xl(2-10)</code>] - extra large, up to 1440px by default
   </div>
 
   <h2>Examples</h2>
@@ -69,7 +75,7 @@
     <li><a href="examples/flexbox-playground.html">Playground</a></li>
     <li><a href="examples/flexbox-vertical-align.html">Vertical align</a></li>
     <li><a href="examples/flexbox-sticky-footer.html">Sticky footer</a></li>
-    <li><a href="examples/flexbox-responsive.html">Grid and responsive breakpoints</a></li>
+    <li><a href="examples/flexbox-responsive.html">Responsive breakpoints</a></li>
     <li><a href="examples/flexbox-layout.html">Layout with fixed header, sidebar and scrollable content area</a></li>
   </ul>
 

@@ -1,18 +1,27 @@
 //-- Flexbox grid
 
-$flexbox-grids: 12 !default;
+$flexbox-grids: 10 !default;
 $flexbox-breakpoints: (xs: 600px, sm: 840px, md: 960px, lg: 1280px, xl: 1440px) !default;
-
-@mixin media-xs { @media (max-width: map_get($flexbox-breakpoints, xs)) { @content; } }
-@mixin media-sm { @media (max-width: map_get($flexbox-breakpoints, sm)) { @content; } }
-@mixin media-md { @media (max-width: map_get($flexbox-breakpoints, md)) { @content; } }
-@mixin media-lg { @media (max-width: map_get($flexbox-breakpoints, lg)) { @content; } }
-@mixin media-xl { @media (max-width: map_get($flexbox-breakpoints, xl)) { @content; } }
 
 .flex {
   $grids: ();
   $columns: ();
   $grid: 2;
+
+  @mixin media-xs { @media (max-width: map_get($flexbox-breakpoints, xs)) { @content; } }
+  @mixin media-sm { @media (max-width: map_get($flexbox-breakpoints, sm)) { @content; } }
+  @mixin media-md { @media (max-width: map_get($flexbox-breakpoints, md)) { @content; } }
+  @mixin media-lg { @media (max-width: map_get($flexbox-breakpoints, lg)) { @content; } }
+  @mixin media-xl { @media (max-width: map_get($flexbox-breakpoints, xl)) { @content; } }
+
+  @function str-replace($string, $search, $replace: '') {
+    $string: inspect($string);
+    $index: str-index($string, $search);
+    @if $index {
+      @return str-slice($string, 1, $index - 1) + $replace + str-replace(str-slice($string, $index + str-length($search)), $search, $replace);
+    }
+    @return $string;
+  }
 
   @while $grid <= $flexbox-grids {
     $col: 2;
@@ -82,6 +91,42 @@ $flexbox-breakpoints: (xs: 600px, sm: 840px, md: 960px, lg: 1280px, xl: 1440px) 
   @each $size, $selector in $columns {
     @at-root #{$selector} {
       flex-basis: $size;
+    }
+  }
+
+  // generate media breakpoints
+  @include media-xl {
+    @each $size, $selector in $columns {
+      $selector: str-replace($selector, ".col", ".xl");
+      @at-root #{$selector} { flex-basis: $size; }
+    }
+  }
+
+  @include media-lg {
+    @each $size, $selector in $columns {
+      $selector: str-replace($selector, ".col", ".lg");
+      @at-root #{$selector} { flex-basis: $size; }
+    }
+  }
+
+  @include media-md {
+    @each $size, $selector in $columns {
+      $selector: str-replace($selector, ".col", ".md");
+      @at-root #{$selector} { flex-basis: $size; }
+    }
+  }
+
+  @include media-sm {
+    @each $size, $selector in $columns {
+      $selector: str-replace($selector, ".col", ".sm");
+      @at-root #{$selector} { flex-basis: $size; }
+    }
+  }
+
+  @include media-xs {
+    @each $size, $selector in $columns {
+      $selector: str-replace($selector, ".col", ".xs");
+      @at-root #{$selector} { flex-basis: $size; }
     }
   }
 }
