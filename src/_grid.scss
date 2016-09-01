@@ -1,7 +1,7 @@
 //-- Flexbox grid
 
-// less amount of grids heavily reduces final css-size
-$flexbox-grids: 10 !default;
+// less amount of grids reduces final css-size
+$flexbox-grids: 12 !default;
 
 // must be listed in descending order
 $flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) !default;
@@ -10,6 +10,10 @@ $flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) 
   $grids: ();
   $columns: ();
   $grid: 2;
+
+  @function get-media($breakpoint) {
+    @return unquote(if(type_of($breakpoint) == number, "(max-width: #{$breakpoint})", $breakpoint));
+  }
 
   @function str-replace($string, $search, $replace: '') {
     $string: inspect($string);
@@ -41,9 +45,9 @@ $flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) 
   }
 
   // generate grids
-  @each $grid, $grid-params in $grids {
-    $selector: nth($grid-params, 1);
-    $size: nth($grid-params, 2);
+  @each $grid, $params in $grids {
+    $selector: nth($params, 1);
+    $size: nth($params, 2);
     $flex-basis-offset: ($grid - 1) / $grid * $flexbox-gap-size;
 
     @at-root #{$selector} {
@@ -92,10 +96,16 @@ $flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) 
   }
 
   // generate media breakpoints
-  @each $prefix, $size in $flexbox-breakpoints {
-    @media (max-width: #{$size}) {
+  @each $prefix, $breakpoint in $flexbox-breakpoints {
+    @media #{get-media($breakpoint)} {
       > .#{$prefix}0 {
         display: none;
+      }
+      @each $grid, $params in $grids {
+        $size: nth($params, 2);
+        &.#{$prefix + $grid} > * {
+          flex-basis: $size;
+        }
       }
       @each $size, $selector in $columns {
         $selector: str-replace($selector, ".col", "."+ $prefix);
