@@ -1,18 +1,20 @@
 //-- Flexbox grid
 
 $flexbox-grids: 10 !default;
-$flexbox-breakpoints: (xs: 600px, sm: 840px, md: 960px, lg: 1280px, xl: 1440px) !default;
+
+// must be listed in descending order
+$flexbox-breakpoints: (
+  lg: 1280px,
+  md: 960px,
+  sm: 840px,
+  xs: 600px
+) !default;
+
 
 .flex {
   $grids: ();
   $columns: ();
   $grid: 2;
-
-  @mixin media-xs { @media (max-width: map_get($flexbox-breakpoints, xs)) { @content; } }
-  @mixin media-sm { @media (max-width: map_get($flexbox-breakpoints, sm)) { @content; } }
-  @mixin media-md { @media (max-width: map_get($flexbox-breakpoints, md)) { @content; } }
-  @mixin media-lg { @media (max-width: map_get($flexbox-breakpoints, lg)) { @content; } }
-  @mixin media-xl { @media (max-width: map_get($flexbox-breakpoints, xl)) { @content; } }
 
   @function str-replace($string, $search, $replace: '') {
     $string: inspect($string);
@@ -95,38 +97,12 @@ $flexbox-breakpoints: (xs: 600px, sm: 840px, md: 960px, lg: 1280px, xl: 1440px) 
   }
 
   // generate media breakpoints
-  @include media-xl {
-    @each $size, $selector in $columns {
-      $selector: str-replace($selector, ".col", ".xl");
-      @at-root #{$selector} { flex-basis: $size; }
-    }
-  }
-
-  @include media-lg {
-    @each $size, $selector in $columns {
-      $selector: str-replace($selector, ".col", ".lg");
-      @at-root #{$selector} { flex-basis: $size; }
-    }
-  }
-
-  @include media-md {
-    @each $size, $selector in $columns {
-      $selector: str-replace($selector, ".col", ".md");
-      @at-root #{$selector} { flex-basis: $size; }
-    }
-  }
-
-  @include media-sm {
-    @each $size, $selector in $columns {
-      $selector: str-replace($selector, ".col", ".sm");
-      @at-root #{$selector} { flex-basis: $size; }
-    }
-  }
-
-  @include media-xs {
-    @each $size, $selector in $columns {
-      $selector: str-replace($selector, ".col", ".xs");
-      @at-root #{$selector} { flex-basis: $size; }
+  @each $prefix, $size in $flexbox-breakpoints {
+    @media (max-width: #{$size}) {
+      @each $size, $selector in $columns {
+        $selector: str-replace($selector, ".col", "."+ $prefix);
+        @at-root #{$selector} { flex-basis: $size; }
+      }
     }
   }
 }
