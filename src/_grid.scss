@@ -1,15 +1,10 @@
 //-- Flexbox grid
 
+// less amount of grids heavily reduces final css-size
 $flexbox-grids: 10 !default;
 
 // must be listed in descending order
-$flexbox-breakpoints: (
-  lg: 1280px,
-  md: 960px,
-  sm: 840px,
-  xs: 600px
-) !default;
-
+$flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) !default;
 
 .flex {
   $grids: ();
@@ -99,6 +94,9 @@ $flexbox-breakpoints: (
   // generate media breakpoints
   @each $prefix, $size in $flexbox-breakpoints {
     @media (max-width: #{$size}) {
+      > .#{$prefix}0 {
+        display: none;
+      }
       @each $size, $selector in $columns {
         $selector: str-replace($selector, ".col", "."+ $prefix);
         @at-root #{$selector} { flex-basis: $size; }

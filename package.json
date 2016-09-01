@@ -1,11 +1,11 @@
 {
   "name": "flex.box",
-  "version": "1.2.6",
+  "version": "1.2.7",
   "description": "CSS library for easier work with flex boxes",
   "main": "src/flexbox.scss",
   "author": "ixrock",
   "license": "MIT",
-  "keywords": ["flexbox", "css", "sass"],
+  "keywords": ["flexbox", "grid", "css", "sass"],
   "homepage": "https://github.com/ixrock/flexbox",
   "scripts": {
     "start": "gulp"
