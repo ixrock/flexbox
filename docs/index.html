@@ -29,7 +29,6 @@
     [<code>.center</code>] = vertically and horizontally centering children (magic trick with <var>margin: auto</var>)
     [<code>.fullsize</code>[<code>-fixed</code>]] = set up <var>min-width/width</var> and <var>min-height/height</var> to 100%
     [<code>.gaps</code>] = adds a gap between children <var>.box</var> elements, by default = 1rem
-    [<code>.gaps-unordered-cols</code>] = adds extra gap to the container itself! use it only when you need <var>.grid*</var> with different sized <var>.col*</var>s
 
     <b>justify-content:</b> use one of the property modifiers (ex. <code>justify-center</code>)
     [<code>.justify-</code>(<code>flex-start|center|flex-end|space-around|space-between</code>)]
@@ -60,8 +59,9 @@
     note: <code>.auto.top.left</code> not the same as <code>.auto-top-left</code> which is actually opposite, i.e. <code>.auto.right.bottom</code>
 
     <b>columns</b>: set up <var>flex-basis</var> for the child (ex. <code>.col3</code>)
-    warning: not working correctly with <code>.flex.gaps</code> use <code>.gaps-unordered-cols</code> or create them manually inside <var>.box</var> child element
     [<code>.col</code>(<code>2-12</code>)] overrides value from parent <var>.flex.grid*</var>
+    warning: not working correctly with <code>.flex.gaps</code>
+    create gaps manually with <var>border</var> or <var>padding</var> at <code>.box</code> elements and negative <var>margin</var> at <code>.flex</code> container
   </div>
 
   <h2>Examples</h2>
@@ -69,6 +69,7 @@
     <li><a href="examples/flexbox-playground.html">Playground</a></li>
     <li><a href="examples/flexbox-vertical-align.html">Vertical align</a></li>
     <li><a href="examples/flexbox-sticky-footer.html">Sticky footer</a></li>
+    <li><a href="examples/flexbox-responsive.html">Grid and responsive breakpoints</a></li>
     <li><a href="examples/flexbox-layout.html">Layout with fixed header, sidebar and scrollable content area</a></li>
   </ul>
 

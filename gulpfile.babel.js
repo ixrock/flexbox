@@ -5,7 +5,6 @@ import bs from 'browser-sync'
 
 const srcDir = './src/';
 const docsDir = './docs/';
-const sassMainFile = srcDir + 'flexbox.scss';
 
 // development watch mode with local server and auto-reloading browsers
 gulp.task('default', () => {
@@ -15,7 +14,7 @@ gulp.task('default', () => {
     startPath: docsDir,
     server: './'
   });
-  gulp.watch(sassMainFile, ['sass']);
+  gulp.watch(srcDir + '*.scss', ['sass']);
   gulp.watch([
     docsDir + '**',
     srcDir + '*.css'
@@ -24,7 +23,7 @@ gulp.task('default', () => {
 
 // compile sass + autoprefixer
 gulp.task('sass', function () {
-  return gulp.src(sassMainFile)
+  return gulp.src(srcDir + 'flexbox.scss')
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
     .pipe(autoprefixer({browsers: ['last 2 versions'], cascade: false}))
     .pipe(gulp.dest(file => file.base));

@@ -28,8 +28,17 @@
       padding: .5rem;
     }
 
-    .flex:not(.gaps-unordered-cols) > .box,
-    .gaps-unordered-cols > .box:after {
+    .flex[id]:before {
+      content: "#" attr(id);
+      position: absolute;
+      right: -1px;
+      bottom: calc(100% + 1px);
+      background: rgba(255, 0, 0, .75);
+      color: white;
+      padding: .5rem;
+    }
+
+    .flex > .box {
       background: silver;
       text-align: center;
       padding: 5px;
@@ -37,6 +46,14 @@
 
     .box:after {
       content: attr(class);
+    }
+
+    #gaps-manual {
+      padding: .5rem;
+    }
+
+    #gaps-manual > .box {
+      border: .5rem solid white;
     }
   </style>
 </head>
@@ -82,7 +99,7 @@
     <div class="box"></div>
   </div>
 
-  <div class="flex wrap grid4 gaps-unordered-cols">
+  <div class="flex wrap grid4" id="gaps-manual">
     <div class="box"></div>
     <div class="box"></div>
     <div class="box"></div>
