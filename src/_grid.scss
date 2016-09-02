@@ -12,7 +12,7 @@ $flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) 
   $grid: 2;
 
   @function get-media($breakpoint) {
-    @return unquote(if(type_of($breakpoint) == number, "(max-width: #{$breakpoint})", $breakpoint));
+    @return if(type_of($breakpoint) == number, "(max-width: #{$breakpoint})", $breakpoint);
   }
 
   @function str-replace($string, $search, $replace: '') {
