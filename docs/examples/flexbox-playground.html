@@ -6,16 +6,22 @@
   <link rel="stylesheet" href="../common.css"/>
   <style type="text/css">
     main {
-      margin: 1rem;
-      padding: 1rem;
-      padding-top: 0;
+      --margin: 2rem;
+      margin: var(--margin) 0 0 var(--margin);
+      display: flex;
+      flex-flow: row wrap;
+    }
+
+    main > * {
+      flex: 1 0 350px;
+      margin: 0 var(--margin) var(--margin) 0;
     }
 
     .flex {
+      position: relative;
       min-height: 150px;
       border: 1px solid black;
       margin-top: 40px !important;
-      position: relative;
     }
 
     .flex:after {
@@ -47,19 +53,11 @@
     .box:after {
       content: attr(class);
     }
-
-    #gaps-manual {
-      padding: .5rem;
-    }
-
-    #gaps-manual > .box {
-      border: .5rem solid white;
-    }
   </style>
 </head>
 <body>
 
-<main class="flex wrap gaps grid2">
+<main>
   <div class="flex gaps auto">
     <div class="box"></div>
     <div class="box"></div>
@@ -86,30 +84,6 @@
     <div class="box"></div>
     <div class="box grow"></div>
     <div class="box"></div>
-  </div>
-
-  <div class="flex wrap grid5 gaps">
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-  </div>
-
-  <div class="flex wrap grid4" id="gaps-manual">
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box col2"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box col3"></div>
-    <div class="box"></div>
-    <div class="box col4"></div>
   </div>
 
   <div class="flex center">
