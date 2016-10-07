@@ -12,7 +12,9 @@ Learn flex boxes as is: classes just reflects css-properties!
     [.justify-(flex-start|center|flex-end|space-around|space-between)] /** justify-content **/
     [.align-(flex-start|center|flex-end|stretch|baseline)] /** align-items **/
     [.content-(flex-start|center|flex-end|space-around|space-between|stretch)] /** align-content **/
-    [--flex-gaps-size] /* override default gaps size */
+    [.grid(1-12) > .cols > .col(1-12)] /* grid layout */
+    [--flex-grid: number] /* grid size */
+    [--flex-gap: px/em] /* custom gap size */
 .flex > .box
     [.first.last.grow.noshrink]
     [.flex-start.center.flex-end.stretch.baseline]  /** align-self **/

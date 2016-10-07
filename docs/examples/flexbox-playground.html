@@ -6,25 +6,21 @@
   <link rel="stylesheet" href="../common.css"/>
   <style type="text/css">
     main {
-      --margin: 2rem;
-      margin: var(--margin) 0 0 var(--margin);
+      --space: 2rem;
+      margin: var(--space) 0 0 var(--space);
       display: flex;
       flex-flow: row wrap;
     }
 
     main > * {
       flex: 1 0 350px;
-      margin: 0 var(--margin) var(--margin) 0;
-    }
-
-    .flex {
+      margin: 40px var(--space) var(--space) 0;
       position: relative;
       min-height: 150px;
       border: 1px solid black;
-      margin-top: 40px !important;
     }
 
-    .flex:after {
+    main > :after {
       content: 'class="' attr(class) '"';
       position: absolute;
       left: -1px;
@@ -34,24 +30,19 @@
       padding: .5rem;
     }
 
-    .flex[id]:before {
-      content: "#" attr(id);
-      position: absolute;
-      right: -1px;
-      bottom: calc(100% + 1px);
-      background: rgba(255, 0, 0, .75);
-      color: white;
-      padding: .5rem;
-    }
-
-    .flex > .box {
+    .box, .cols > * {
       background: silver;
       text-align: center;
       padding: 5px;
     }
 
-    .box:after {
+    .box:after, .cols > *:after {
       content: attr(class);
+    }
+
+    .custom-gaps {
+      --flex-gap: 10px;
+      padding: var(--flex-gap);
     }
   </style>
 </head>
@@ -140,6 +131,32 @@
     <div class="box"></div>
     <div class="box"></div>
     <div class="box"></div>
+  </div>
+
+  <div class="flex grid3 gaps">
+    <div class="cols">
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+      <div class="col"></div>
+    </div>
+  </div>
+
+  <div class="flex grid5 gaps custom-gaps">
+    <div class="cols">
+      <div class="col"></div>
+      <div class="col3"></div>
+      <div class="col"></div>
+      <div class="col5"></div>
+      <div class="col2"></div>
+      <div class="col"></div>
+      <div class="col2"></div>
+    </div>
   </div>
 </main>
 

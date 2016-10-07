@@ -8,7 +8,7 @@
 <body>
 
 <main style="padding: 2rem; margin: auto; width: 75%;">
-  <h1>Flexbox + autoprefixer = ❤</h1>
+  <h1>Flexbox + autoprefixer + var(--css) = ❤</h1>
   <p>Learn flex boxes as is: classes just reflects css-properties!</p>
 
   <h2>Install</h2>
@@ -28,8 +28,8 @@
     [<code>.wrap</code>[<code>-reverse</code>]] = allow flex children go to the next line if they're not fitting
     [<code>.center</code>] = vertically and horizontally centering children (magic trick with <var>margin: auto</var>)
     [<code>.fullsize</code>[<code>-fixed</code>]] = set up <var>min-width/width</var> and <var>min-height/height</var> to 100%
-    [<code>.gaps</code>] adds a gap between children <var>.box</var> elements, by default = 1em, <b>requires support <a href="http://caniuse.com/#feat=css-variables">css-variables</a>!</b>
-    To customize gaps size override <code>--flex-gaps-size</code> within <var>.flex</var> block
+    [<code>.gaps</code>] adds a gap between children <var>.box</var> elements, by default = 1em, requires support <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a>
+    Pro-tip: to customize gaps size override <code>--flex-gap</code> variable within <var>.flex</var> block
 
     <b>justify-content:</b> use one of the property modifiers (ex. <code>justify-center</code>)
     [<code>.justify-</code>(<code>flex-start|center|flex-end|space-around|space-between</code>)]
@@ -56,6 +56,14 @@
     [<code>.auto</code>[<code>-left-right-top-bottom</code>]] (ex. <code>.auto</code> all sides, <code>.auto-left-right</code> only left and right)
     note: <code>.auto.top.left</code> not the same as <code>.auto-top-left</code> which is actually opposite, i.e. <code>.auto.right.bottom</code>
   </div>
+
+  <h3>Grids:</h3>
+  <div class="code"><code>.flex.grid(1-12) > .cols > .col(1-12)</code> (works only with <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a> support)
+    Pro-tip: instead of using <var>.grid(1-12)</var> you can define custom grid size within <var>.flex</var> container with <code>--flex-grid</code> css-variable..
+    But.. number of possible <var>.col(size)</var> still restricted to 12..
+    But.. if you use sass you can override <code>$flexbox-grids-count</code> before including <var>flexbox.scss</var> to your code.
+  </div>
+
 
   <h2>Examples</h2>
   <ul>

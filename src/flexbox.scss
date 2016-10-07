@@ -1,7 +1,9 @@
 //-- Flexbox
 
+$flexbox-grids-count: 12 !default;
+
 .flex {
-  --flex-gaps-size: 1em;
+  --flex-gap: 1em;
   display: flex;
 
   &.inline {
@@ -77,12 +79,12 @@
   &.gaps {
     &:not(.column) {
       > :not(:last-of-type) {
-        margin-right: var(--flex-gaps-size);
+        margin-right: var(--flex-gap);
       }
     }
     &.column {
       > :not(:last-of-type) {
-        margin-bottom: var(--flex-gaps-size);
+        margin-bottom: var(--flex-gap);
       }
     }
   }
@@ -118,6 +120,39 @@
       &.#{$mod} {
         align-self: $mod;
       }
+    }
+  }
+
+  // generate grids
+  $grid: 1;
+  @while $grid <= $flexbox-grids-count {
+    &.grid#{$grid} {
+      --flex-grid: $grid;
+      $grid: $grid + 1;
+    }
+  }
+  > .cols {
+    display: flex;
+    flex-wrap: wrap;
+    flex-grow: 1;
+    > * {
+      flex-basis: calc(100% / var(--flex-grid));
+      $col: 1;
+      @while $col <= $flexbox-grids-count {
+        &.col#{$col} {
+          flex-basis: calc(100% / var(--flex-grid) * #{$col});
+        }
+        $col: $col + 1;
+      }
+    }
+  }
+  &.gaps > .cols {
+    --flex-gaps-size-half: calc(var(--flex-gap) / 2);
+    --flex-gaps-size-half-neg: calc(var(--flex-gap) / -2);
+    margin: var(--flex-gaps-size-half-neg);
+    > * {
+      background-clip: padding-box;
+      border: var(--flex-gaps-size-half) solid transparent;
     }
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "flex.box",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "description": "CSS library for easier work with flex boxes",
   "main": "src/flexbox.scss",
   "author": "ixrock",
