@@ -136,7 +136,7 @@ $flexbox-grids-count: 12 !default;
     flex: 1 0;
     display: flex;
     > * {
-      flex: 1 0;
+      flex: 1 0 auto;
       $col: 1;
       @while $col <= $flexbox-grids-count {
         &.col#{$col} {
