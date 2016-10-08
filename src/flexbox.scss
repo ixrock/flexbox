@@ -39,7 +39,7 @@ $flexbox-grids-count: 12 !default;
 
   &.auto {
     > * {
-      flex: 1 0 auto;
+      flex: 1 0 0;
     }
   }
 
@@ -132,15 +132,15 @@ $flexbox-grids-count: 12 !default;
     }
   }
   > .cols {
-    display: flex;
     flex-wrap: wrap;
-    flex-grow: 1;
+    flex: 1 0;
+    display: flex;
     > * {
-      flex-basis: calc(100% / var(--flex-grid));
+      flex: 1 0;
       $col: 1;
       @while $col <= $flexbox-grids-count {
         &.col#{$col} {
-          flex-basis: calc(100% / var(--flex-grid) * #{$col});
+          flex: 0 0 calc(100% / var(--flex-grid) * #{$col});
         }
         $col: $col + 1;
       }
