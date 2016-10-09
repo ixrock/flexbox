@@ -123,29 +123,38 @@ $flexbox-grids-count: 12 !default;
     }
   }
 
-  // generate grids
+  // generate grids & columns for browsers with css-variables support
   $grid: 1;
-  @while $grid <= $flexbox-grids-count {
+  @while $grid <= $flexbox-grids-count - 1 {
     &.grid#{$grid} {
       --flex-grid: $grid;
+    }
+    .cols > .col#{$grid} {
+      flex: 0 0 calc(100% / var(--flex-grid) * #{$grid});
+    }
+    $grid: $grid + 1;
+  }
+
+  // define 12-columns grid with css-based generated values for browsers with no css-variables support
+  &.grid#{$flexbox-grids-count} {
+    $grid: 1;
+    @while $grid <= $flexbox-grids-count {
+      .cols > .col#{$grid} {
+        flex: 0 0 100% / $flexbox-grids-count * $grid;
+      }
       $grid: $grid + 1;
     }
   }
+
   > .cols {
     flex-wrap: wrap;
     flex: 1 0;
     display: flex;
-    > * {
-      flex: 1 0 auto;
-      $col: 1;
-      @while $col <= $flexbox-grids-count {
-        &.col#{$col} {
-          flex: 0 0 calc(100% / var(--flex-grid) * #{$col});
-        }
-        $col: $col + 1;
-      }
+    > .auto {
+      flex: 1;
     }
   }
+
   &.gaps > .cols {
     --flex-gaps-size-half: calc(var(--flex-gap) / 2);
     --flex-gaps-size-half-neg: calc(var(--flex-gap) / -2);

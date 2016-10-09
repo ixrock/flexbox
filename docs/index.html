@@ -8,7 +8,7 @@
 <body>
 
 <main style="padding: 2rem; margin: auto; width: 75%;">
-  <h1>Flexbox + autoprefixer + var(--css) = ❤</h1>
+  <h1>Flexbox + autoprefixer = ❤</h1>
   <p>Learn flex boxes as is: classes just reflects css-properties!</p>
 
   <h2>Install</h2>
@@ -62,6 +62,7 @@
     Pro-tip: instead of using <var>.grid(1-12)</var> you can define custom grid size within <var>.flex</var> container with <code>--flex-grid</code> css-variable..
     But.. number of possible <var>.col(size)</var> still restricted to 12..
     But.. if you use sass you can override <code>$flexbox-grids-count</code> before including <var>flexbox.scss</var> to your code.
+    If you still want to use grid with <b>no css-variables</b> support browser try <code>.grid12</code>! This one contains all generated column sizes as is.
   </div>
 
 
