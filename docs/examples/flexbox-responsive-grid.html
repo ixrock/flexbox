@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flexbox - responsive grid</title>
+  <link rel="stylesheet" href="../common.css"/>
+  <style type="text/css">
+    .flex {
+      position: relative;
+      padding: 1em;
+    }
+
+    .flex:before {
+      content: attr(class);
+      padding: 10px;
+      text-align: center;
+      font-weight: bold;
+      width: 150px;
+    }
+
+    .cols > * {
+      counter-increment: box;
+      background: silver;
+      padding: 10px;
+      min-height: 100px;
+    }
+
+    .cols > *:after {
+      content: attr(class) " (" counter(box) ")";
+    }
+  </style>
+</head>
+<body>
+
+<!-- define breakpoints from big to small -->
+<main class="flex gaps grid4 lg3 sm2 xs1">
+  <div class="cols">
+    <div class="col4 lg-hidden sm-visible"></div>
+    <div class="col1"></div>
+    <div class="col1"></div>
+    <div class="col1"></div>
+    <div class="col1"></div>
+    <div class="col3 lg2 sm-hidden"></div>
+    <div class="col1"></div>
+    <div class="col2 lg1"></div>
+    <div class="col2 lg1 sm2 xs-hidden"></div>
+    <div class="col4 hidden sm-visible"></div>
+  </div>
+</main>
+
+</body>
+</html>

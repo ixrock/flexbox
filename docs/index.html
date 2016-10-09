@@ -59,10 +59,16 @@
 
   <h3>Grids:</h3>
   <div class="code"><code>.flex.grid(1-12) > .cols > .col(1-12)</code> (works only with <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a> support)
-    Pro-tip: instead of using <var>.grid(1-12)</var> you can define custom grid size within <var>.flex</var> container with <code>--flex-grid</code> css-variable..
-    But.. number of possible <var>.col(size)</var> still restricted to 12..
-    But.. if you use sass you can override <code>$flexbox-grids-count</code> before including <var>flexbox.scss</var> to your code.
-    If you still want to use grid with <b>no css-variables</b> support browser try <code>.grid12</code>! This one contains all generated column sizes as is.
+    [<code>.auto</code>] says to column fill all remained space in the line (don't combine with <code>.col*</code>)
+    [<code>.hidden</code>] hide a column by default (can become visible with breakpoints, see below)
+
+    <b>media query breakpoints</b> can be overwritten with sass before including <var>flexbox.scss</var>, must be listed in descending order
+    <var>xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px</var>
+
+    [<code>.grid(1-12).(xl|lg|md|sm|xs)(1-12)</code>] e.g <code>"grid4 lg3 sm2 xs1"</code>
+    [<code>.col(1-12).(xl|lg|md|sm|xs)(1-12)</code>] e.g <code>"col2 lg1 sm2"</code>
+    [<code>.col*.(xl|lg|md|sm|xs)-hidden</code>] hide the column at some point, e.g. <code>"col5 xs-hidden"</code>
+    [<code>.col*.(xl|lg|md|sm|xs)-visible</code>] show the column at some point, e.g. <code>"col10 hidden sm-visible"</code>
   </div>
 
 
@@ -71,6 +77,7 @@
     <li><a href="examples/flexbox-playground.html">Playground</a></li>
     <li><a href="examples/flexbox-vertical-align.html">Vertical align</a></li>
     <li><a href="examples/flexbox-sticky-footer.html">Sticky footer</a></li>
+    <li><a href="examples/flexbox-responsive-grid.html">Responsive grid</a></li>
     <li><a href="examples/flexbox-layout.html">Layout with fixed header, sidebar and scrollable content area</a></li>
   </ul>
 

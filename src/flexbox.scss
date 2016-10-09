@@ -1,6 +1,7 @@
 //-- Flexbox
 
 $flexbox-grids-count: 12 !default;
+$flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) !default;
 
 .flex {
   --flex-gap: 1em;
@@ -76,19 +77,6 @@ $flexbox-grids-count: 12 !default;
     }
   }
 
-  &.gaps {
-    &:not(.column) {
-      > :not(:last-of-type) {
-        margin-right: var(--flex-gap);
-      }
-    }
-    &.column {
-      > :not(:last-of-type) {
-        margin-bottom: var(--flex-gap);
-      }
-    }
-  }
-
   // children
   > .box {
     &.first {
@@ -125,25 +113,14 @@ $flexbox-grids-count: 12 !default;
 
   // generate grids & columns for browsers with css-variables support
   $grid: 1;
-  @while $grid <= $flexbox-grids-count - 1 {
+  @while $grid <= $flexbox-grids-count {
     &.grid#{$grid} {
       --flex-grid: $grid;
     }
     .cols > .col#{$grid} {
-      flex: 0 0 calc(100% / var(--flex-grid) * #{$grid});
+      flex: 0 1 calc(100% / var(--flex-grid) * #{$grid});
     }
     $grid: $grid + 1;
-  }
-
-  // define 12-columns grid with css-based generated values for browsers with no css-variables support
-  &.grid#{$flexbox-grids-count} {
-    $grid: 1;
-    @while $grid <= $flexbox-grids-count {
-      .cols > .col#{$grid} {
-        flex: 0 0 100% / $flexbox-grids-count * $grid;
-      }
-      $grid: $grid + 1;
-    }
   }
 
   > .cols {
@@ -153,15 +130,53 @@ $flexbox-grids-count: 12 !default;
     > .auto {
       flex: 1;
     }
+    > .hidden {
+      display: none;
+    }
   }
 
-  &.gaps > .cols {
-    --flex-gaps-size-half: calc(var(--flex-gap) / 2);
-    --flex-gaps-size-half-neg: calc(var(--flex-gap) / -2);
-    margin: var(--flex-gaps-size-half-neg);
-    > * {
-      background-clip: padding-box;
-      border: var(--flex-gaps-size-half) solid transparent;
+  // gaps
+  &.gaps {
+    &:not(.column) {
+      > :not(:last-of-type) {
+        margin-right: var(--flex-gap);
+      }
+    }
+    &.column {
+      > :not(:last-of-type) {
+        margin-bottom: var(--flex-gap);
+      }
+    }
+    > .cols {
+      --flex-gaps-size-half: calc(var(--flex-gap) / 2);
+      --flex-gaps-size-half-neg: calc(var(--flex-gap) / -2);
+      margin: var(--flex-gaps-size-half-neg);
+      > * {
+        background-clip: padding-box;
+        border: var(--flex-gaps-size-half) solid transparent;
+      }
+    }
+  }
+
+  // generate media breakpoints
+  @each $prefix, $breakpoint in $flexbox-breakpoints {
+    @media #{"(max-width: #{$breakpoint})"} {
+      $grid: 1;
+      @while $grid <= $flexbox-grids-count {
+        &.#{$prefix}#{$grid} {
+          --flex-grid: $grid;
+        }
+        > .cols > .#{$prefix}#{$grid} {
+          flex: 0 1 calc(100% / var(--flex-grid) * #{$grid});
+        }
+        $grid: $grid + 1;
+      }
+      > .cols > .#{$prefix}-hidden {
+        display: none !important;
+      }
+      > .cols > .#{$prefix}-visible {
+        display: block !important;
+      }
     }
   }
 }
