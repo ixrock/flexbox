@@ -26,6 +26,6 @@ gulp.task('default', () => {
 gulp.task('sass', function () {
   return gulp.src(sassFiles)
     .pipe(sass({outputStyle: 'compressed'}).on('error', sass.logError))
-    .pipe(autoprefixer({browsers: ['last 2 versions'], cascade: false}))
+    // .pipe(autoprefixer({browsers: ['last 2 versions'], cascade: false}))
     .pipe(gulp.dest(file => file.base));
 });
