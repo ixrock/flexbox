@@ -4,7 +4,7 @@ $flexbox-grids-count: 12 !default;
 $flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) !default;
 
 .flex {
-  --flex-gap: 1em;
+  --flex-gap: 0px;
   display: flex;
 
   &.inline {
@@ -118,7 +118,7 @@ $flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) 
       --flex-grid: $grid;
     }
     .cols > .col#{$grid} {
-      flex: 0 1 calc(100% / var(--flex-grid) * #{$grid});
+      flex: 0 1 calc(100% / var(--flex-grid) * #{$grid} - var(--flex-gap));
     }
     $grid: $grid + 1;
   }
@@ -137,6 +137,7 @@ $flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) 
 
   // gaps
   &.gaps {
+    --flex-gap: 1em;
     &:not(.column) {
       > :not(:last-of-type) {
         margin-right: var(--flex-gap);
@@ -148,12 +149,9 @@ $flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) 
       }
     }
     > .cols {
-      --flex-gaps-size-half: calc(var(--flex-gap) / 2);
-      --flex-gaps-size-half-neg: calc(var(--flex-gap) / -2);
-      margin: var(--flex-gaps-size-half-neg);
+      margin: calc(var(--flex-gap) / -2);
       > * {
-        background-clip: padding-box;
-        border: var(--flex-gaps-size-half) solid transparent;
+        margin: calc(var(--flex-gap) / 2);
       }
     }
   }
@@ -167,7 +165,7 @@ $flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) 
           --flex-grid: $grid;
         }
         > .cols > .#{$prefix}#{$grid} {
-          flex: 0 1 calc(100% / var(--flex-grid) * #{$grid});
+          flex: 0 1 calc(100% / var(--flex-grid) * #{$grid} - var(--flex-gap));
         }
         $grid: $grid + 1;
       }
