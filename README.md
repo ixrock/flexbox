@@ -12,9 +12,7 @@ Learn flex boxes as is: classes just reflects css-properties!
     [.justify-(flex-start|center|flex-end|space-around|space-between)] /** justify-content **/
     [.align-(flex-start|center|flex-end|stretch|baseline)] /** align-items **/
     [.content-(flex-start|center|flex-end|space-around|space-between|stretch)] /** align-content **/
-    [.grid(1-12).(xl|lg|md|sm|xs)(1-12) > .cols > .col(1-12).(xl|lg|md|sm|xs)(1-12)] /* grid layout */
-    [.col*.(xl|lg|md|sm|xs)-hidden] /* hide column */
-    [.col*.(xl|lg|md|sm|xs)-visible] /* show column */
+    [.grid(1-12).(xl|lg|md|sm|xs)(1-12) > .cols > .col(1-12).(xl|lg|md|sm|xs)(1-12)-(hidden|visible)] /* grid */
 .flex > .box
     [.first.last.grow.noshrink]
     [.flex-start.center.flex-end.stretch.baseline]  /** align-self **/

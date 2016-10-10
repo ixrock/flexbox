@@ -10,6 +10,17 @@
       padding: 1em;
     }
 
+    .box {
+      --flex-gap: 10px;
+      padding: 10px;
+      background: rgba(0, 0, 0, .1);
+      border-radius: 5px;
+    }
+
+    .box:before {
+      content: attr(class);
+    }
+
     .flex:before {
       content: attr(class);
       padding: 10px;
@@ -25,7 +36,7 @@
       min-height: 100px;
     }
 
-    .cols > *:after {
+    .cols > :before {
       content: attr(class) " (" counter(box) ")";
     }
   </style>
@@ -40,11 +51,14 @@
     <div class="col1"></div>
     <div class="col1"></div>
     <div class="col1"></div>
-    <div class="col3 lg2 sm-hidden"></div>
+    <div class="col3 lg2"></div>
     <div class="col1"></div>
     <div class="col2 lg1"></div>
-    <div class="col2 lg1 sm2 xs-hidden"></div>
-    <div class="col4 hidden sm-visible"></div>
+    <div class="col2 lg1 sm2"></div>
+    <div class="col4 sm-hidden flex gaps center">
+      <div class="box grow"></div>
+      <div class="box"></div>
+    </div>
   </div>
 </main>
 

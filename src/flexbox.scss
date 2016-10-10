@@ -127,7 +127,7 @@ $flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) 
     flex-wrap: wrap;
     flex: 1 0;
     display: flex;
-    > .auto {
+    > * {
       flex: 1;
     }
     > .hidden {
@@ -176,6 +176,9 @@ $flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) 
       }
       > .cols > .#{$prefix}-visible {
         display: block !important;
+        &.flex {
+          display: flex !important;
+        }
       }
     }
   }

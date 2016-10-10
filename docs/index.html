@@ -59,11 +59,10 @@
 
   <h3>Grids:</h3>
   <div class="code"><code>.flex.grid(1-12) > .cols > .col(1-12)</code> (works only with <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a> support)
-    [<code>.auto</code>] says to column fill all remained space in the line (don't combine with <code>.col*</code>)
     [<code>.hidden</code>] hide a column by default (can become visible with breakpoints, see below)
 
     <b>media query breakpoints</b> can be overwritten with sass before including <var>flexbox.scss</var>, must be listed in descending order
-    <var>xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px</var>
+    Max-width: <var>xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px</var>
 
     [<code>.grid(1-12).(xl|lg|md|sm|xs)(1-12)</code>] e.g <code>"grid4 lg3 sm2 xs1"</code>
     [<code>.col(1-12).(xl|lg|md|sm|xs)(1-12)</code>] e.g <code>"col2 lg1 sm2"</code>
