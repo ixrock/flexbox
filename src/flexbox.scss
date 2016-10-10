@@ -139,12 +139,12 @@ $flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) 
   &.gaps {
     --flex-gap: 1em;
     &:not(.column) {
-      > :not(:last-of-type) {
+      > :not(:last-child) {
         margin-right: var(--flex-gap);
       }
     }
     &.column {
-      > :not(:last-of-type) {
+      > :not(:last-child) {
         margin-bottom: var(--flex-gap);
       }
     }
