@@ -1,4 +1,4 @@
-# Flexbox + autoprefixer = ❤
+# Flexbox + css variables = ❤
 
 Learn flex boxes as is: classes just reflects css-properties!
 
