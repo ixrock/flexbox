@@ -51,10 +51,9 @@
     <b>align-self:</b> use one of property modifiers
     [<code>.flex-start</code>][<code>.center</code>][<code>.flex-end</code>][<code>.stretch</code>][<code>.baseline</code>]
 
-    <b>margin</b>: <var>auto</var> creates magical auto-spacing/offsets
-    [<code>.auto</code>[<code>.top</code>][<code>.bottom</code>][<code>.left</code>][<code>.right</code>]] (ex. <code>.auto.top.bottom</code>)
-    [<code>.auto</code>[<code>-left-right-top-bottom</code>]] (ex. <code>.auto</code> all sides, <code>.auto-left-right</code> only left and right)
-    note: <code>.auto.top.left</code> not the same as <code>.auto-top-left</code> which is actually opposite, i.e. <code>.auto.right.bottom</code>
+    <b>margin</b>: can be used to create magical offsets which fills all possible space around <code>.flex > .box</code>es
+    [<code>.auto</code>] creates auto margins for all sides of the box
+    [<code>.top</code>][<code>.bottom</code>][<code>.left</code>][<code>.right</code>]] bind to the side with zero-margin and create auto-space to opposite direction
   </div>
 
   <h3>Grids:</h3>
