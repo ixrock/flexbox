@@ -114,7 +114,7 @@ $flexbox-gap-default: 1em !default;
     &.noshrink {
       flex-shrink: 0;
     }
-    &.auto {
+    &.center {
       margin: auto;
     }
     &.left {
@@ -135,7 +135,7 @@ $flexbox-gap-default: 1em !default;
     }
 
     @each $mod in $alignItems {
-      &.#{$mod} {
+      &.self-#{$mod} {
         align-self: $mod;
       }
     }

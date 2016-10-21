@@ -50,8 +50,8 @@
     [<code>.grow</code>] = allow a flex child to grow and grab all possible free space in the flex container flow
     [<code>.noshrink</code>] = don't allow to the flex child reduce its size, might be useful sometimes when sibling children have <code>.grow</code>
 
-    <b>align-self:</b> use one of property modifiers
-    [<code>.flex-start</code>][<code>.center</code>][<code>.flex-end</code>][<code>.stretch</code>][<code>.baseline</code>]
+    <b>align-self:</b> override <var>.flex.align-*</var> for specific <var>.box</var>
+    [<code>.self-</code>(<code>flex-start|center|flex-end|stretch|baseline</code>)]
 
     <b>margin</b>: can be used to create magical offsets which fills all possible space around <code>.flex > .box</code>es
     [<code>.auto</code>] creates auto margins for all sides of the box
