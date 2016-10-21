@@ -8,7 +8,7 @@ Learn flex boxes as is: classes just reflects css-properties!
 ## Quick cheatsheet
 ```css
 .flex
-    [.inline.auto.column.reverse.wrap.center.fullsize.gaps]
+    [.inline.auto.column.reverse.wrap.center.fullsize.gaps.no-gaps]
     [.justify-(flex-start|center|flex-end|space-around|space-between)] /** justify-content **/
     [.align-(flex-start|center|flex-end|stretch|baseline)] /** align-items **/
     [.content-(flex-start|center|flex-end|space-around|space-between|stretch)] /** align-content **/

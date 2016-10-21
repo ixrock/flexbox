@@ -28,8 +28,10 @@
     [<code>.wrap</code>[<code>-reverse</code>]] = allow flex children go to the next line if they're not fitting
     [<code>.center</code>] = vertically and horizontally centering children (magic trick with <var>margin: auto</var>)
     [<code>.fullsize</code>[<code>-fixed</code>]] = set up <var>min-width/width</var> and <var>min-height/height</var> to 100%
-    [<code>.gaps</code>] adds a gap between children <var>.box</var> elements, by default = 1em, requires support <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a>
-    Pro-tip: to customize gaps size override <code>--flex-gap</code> variable within <var>.flex.gaps</var> block
+    [<code>.gaps</code>[<code>.no-gaps</code>]] adds/resets a gap between children <var>.box</var> elements, by default = 1em, requires support <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a>
+
+    Pro-tip: to customize gap size override <code>--flex-gap</code> variable within <var>.flex.gaps</var> block.
+    If you use sass you can also define default gap size by overriding <var>$flexbox-gap-default</var> variable before including <var>flexbox.scss</var>
 
     <b>justify-content:</b> use one of the property modifiers (ex. <code>justify-center</code>)
     [<code>.justify-</code>(<code>flex-start|center|flex-end|space-around|space-between</code>)]

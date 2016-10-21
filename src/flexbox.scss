@@ -2,9 +2,9 @@
 
 $flexbox-grids-count: 12 !default;
 $flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) !default;
+$flexbox-gap-default: 1em !default;
 
 .flex {
-  --flex-gap: 0px;
   display: flex;
 
   &.inline {
@@ -78,7 +78,7 @@ $flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) 
 
   // gaps
   &.gaps {
-    --flex-gap: 1em;
+    --flex-gap: $flexbox-gap-default;
     &:not(.column) {
       > :not(:last-child) {
         margin-right: var(--flex-gap);
@@ -95,6 +95,9 @@ $flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) 
         margin: calc(var(--flex-gap) / 2);
       }
     }
+  }
+  &.no-gaps {
+    --flex-gap: 0;
   }
 
   // children
