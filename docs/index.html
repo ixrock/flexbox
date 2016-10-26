@@ -27,7 +27,7 @@
     [<code>.column</code>[<code>.reverse</code>]] = change flex flow direction from <var>row</var> (default) to <var>column</var>
     [<code>.wrap</code>[<code>-reverse</code>]] = allow flex children go to the next line if they're not fitting
     [<code>.center</code>] = vertically and horizontally centering children (magic trick with <var>margin: auto</var>)
-    [<code>.fullsize</code>] = set up <var>width</var> and <var>height</var> equal to 100%.
+    [<code>.fullsize</code>] = set up <var>min-(width/height)</var> equal to 100%.
     [<code>.gaps</code>[<code>.no-gaps</code>]] adds/resets a gap between children <var>.box</var> elements, by default = 1em, requires support <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a>
 
     Pro-tip 1: set up <var>html, body { height: 100%; }</var> in your main.css to fill whole viewport for <var>.flex.fullsize</var> container within body
