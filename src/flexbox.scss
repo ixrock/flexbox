@@ -6,6 +6,10 @@ $flexbox-gap-default: 1em !default;
 $flexbox-grid-selector: unquote("grid-") !default;
 $flexbox-col-selector: unquote("col-") !default;
 
+html {
+  --flex-gap: 0px;
+}
+
 .flex {
   display: flex;
 
