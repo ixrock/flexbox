@@ -106,7 +106,7 @@ $flexbox-col-selector: unquote("col-") !default;
       }
     }
   }
-  &:not(.gaps) {
+  &.no-gaps {
     --flex-gap: 0px;
   }
 
