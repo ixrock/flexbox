@@ -29,7 +29,7 @@
       width: 150px;
     }
 
-    .cols > * {
+    [class*="col-"] {
       counter-increment: box;
       background: silver;
       padding: 10px;
@@ -37,7 +37,7 @@
       border-radius: 5px;
     }
 
-    .cols > :before {
+    [class*="col-"]:before {
       content: attr(class) " (" counter(box) ")";
     }
   </style>
@@ -45,18 +45,18 @@
 <body>
 
 <!-- define breakpoints from big to small -->
-<main class="flex gaps grid4 lg3 sm2 xs1">
-  <div class="cols">
-    <div class="col4 lg-hidden sm-visible"></div>
-    <div class="col1"></div>
-    <div class="col1"></div>
-    <div class="col1"></div>
-    <div class="col1"></div>
-    <div class="col3 lg2"></div>
-    <div class="col1"></div>
-    <div class="col2 lg1"></div>
-    <div class="col2 lg1 sm2"></div>
-    <div class="col4 sm-hidden flex gaps center">
+<main class="flex gaps grid-4 lg3 sm2 xs1">
+  <div class="gaps-wrapper">
+    <div class="col-4 lg-hidden sm-visible"></div>
+    <div class="col-1"></div>
+    <div class="col-1"></div>
+    <div class="col-1"></div>
+    <div class="col-1"></div>
+    <div class="col-3 lg2"></div>
+    <div class="col-1"></div>
+    <div class="col-2 lg1"></div>
+    <div class="col-2 lg1 sm2"></div>
+    <div class="col-4 sm-hidden flex gaps center">
       <div class="box grow"></div>
       <div class="box"></div>
     </div>

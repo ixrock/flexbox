@@ -3,6 +3,8 @@
 $flexbox-grids-count: 12 !default;
 $flexbox-breakpoints: (xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px) !default;
 $flexbox-gap-default: 1em !default;
+$flexbox-grid-selector: unquote("grid-") !default;
+$flexbox-col-selector: unquote("col-") !default;
 
 .flex {
   display: flex;
@@ -12,8 +14,12 @@ $flexbox-gap-default: 1em !default;
   }
 
   &.fullsize {
-    min-width: 100%;
-    min-height: 100%;
+    width: 100%;
+    height: 100%;
+    &-viewport {
+      width: 100vw;
+      height: 100vh;
+    }
   }
 
   &.column {
@@ -85,15 +91,23 @@ $flexbox-gap-default: 1em !default;
         margin-bottom: var(--flex-gap);
       }
     }
-    > .cols {
-      margin: calc(var(--flex-gap) / -2);
-      > * {
-        margin: calc(var(--flex-gap) / 2);
+    &[class*="#{$flexbox-grid-selector}"] {
+      > .gaps-wrapper {
+        flex-wrap: wrap;
+        flex: 1 0;
+        display: flex;
+        margin: calc(var(--flex-gap) / -2);
+        > * {
+          margin: calc(var(--flex-gap) / 2);
+        }
+        > .auto {
+          flex-grow: 1;
+        }
       }
     }
   }
-  &.no-gaps {
-    --flex-gap: 0;
+  &:not(.gaps) {
+    --flex-gap: 0px;
   }
 
   // children
@@ -106,6 +120,9 @@ $flexbox-gap-default: 1em !default;
     }
     &.grow {
       flex-grow: 1;
+    }
+    &.nogrow {
+      flex-grow: 0;
     }
     &.noshrink {
       flex-shrink: 0;
@@ -140,25 +157,22 @@ $flexbox-gap-default: 1em !default;
   // generate grids & columns for browsers with css-variables support
   $grid: 1;
   @while $grid <= $flexbox-grids-count {
-    &.grid#{$grid} {
+    &.#{$flexbox-grid-selector}#{$grid} {
       --flex-grid: $grid;
     }
-    > .cols > .col#{$grid} {
+    .#{$flexbox-col-selector}#{$grid} {
       --flex-col: $grid;
-      flex: 0 1 calc(100% / var(--flex-grid) * var(--flex-col) - var(--flex-gap));
     }
     $grid: $grid + 1;
   }
 
-  > .cols {
+  &[class*="#{$flexbox-grid-selector}"] {
     flex-wrap: wrap;
-    flex: 1 0;
-    display: flex;
-    > * {
-      flex: 1;
-    }
-    > .hidden {
-      display: none;
+    [class*="#{$flexbox-col-selector}"] {
+      flex: 0 1 calc(100% / var(--flex-grid) * var(--flex-col) - var(--flex-gap));
+      &.hidden {
+        display: none;
+      }
     }
   }
 
@@ -170,20 +184,22 @@ $flexbox-gap-default: 1em !default;
         &.#{$prefix}#{$grid} {
           --flex-grid: $grid;
         }
-        > .cols > .#{$prefix}#{$grid} {
+        .#{$prefix}#{$grid} {
           --flex-col: $grid;
         }
         $grid: $grid + 1;
       }
-      > .cols > .#{$prefix}-hidden {
-        display: none !important;
-      }
-      > .cols > .#{$prefix}-visible {
-        display: block !important;
-        &.flex {
-          display: flex !important;
-          &.inline {
-            display: inline-flex !important;
+      &[class*="#{$flexbox-grid-selector}"] {
+        .#{$prefix}-hidden {
+          display: none !important;
+        }
+        .#{$prefix}-visible {
+          display: block !important;
+          &.flex {
+            display: flex !important;
+            &.inline {
+              display: inline-flex !important;
+            }
           }
         }
       }

@@ -27,8 +27,8 @@
     [<code>.column</code>[<code>.reverse</code>]] = change flex flow direction from <var>row</var> (default) to <var>column</var>
     [<code>.wrap</code>[<code>-reverse</code>]] = allow flex children go to the next line if they're not fitting
     [<code>.center</code>] = vertically and horizontally centering children (magic trick with <var>margin: auto</var>)
-    [<code>.fullsize</code>] = set up <var>min-(width/height)</var> equal to 100%.
-    [<code>.gaps</code>[<code>.no-gaps</code>]] adds/resets a gap between children <var>.box</var> elements, by default = 1em, requires support <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a>
+    [<code>.fullsize</code>[<code>-viewport</code>] = set up <var>(width/height)</var> equal to 100% or 100vw/vh in case of <var>.fullsize-viewport</var>
+    [<code>.gaps</code>] adds/resets a gap between children <var>.box</var> elements, by default = 1em, requires support <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a>
 
     Pro-tip 1: set up <var>html, body { height: 100%; }</var> in your main.css to fill whole viewport for <var>.flex.fullsize</var> container within body
     Pro-tip 2: to customize gap size override <code>--flex-gap</code> variable within <var>.flex.gaps</var> block.
@@ -49,7 +49,8 @@
     [<code>.first</code>] = put element to the start (<var>order: -1</var>)
     [<code>.last</code>] = put element to the end (<var>order: 1</var>)
     [<code>.grow</code>] = allow a flex child to grow and grab all possible free space in the flex container flow
-    [<code>.noshrink</code>] = don't allow to the flex child reduce its size, might be useful sometimes when sibling children have <code>.grow</code>
+    [<code>.nogrow</code>] = disallow a flex child to grow, might be useful with <var>.flex.auto</var>
+    [<code>.noshrink</code>] = disallow a flex child to reduce its size, might be useful sometimes when sibling children have <code>.grow</code>
 
     <b>align-self:</b> override <var>.flex.align-*</var> for specific <var>.box</var>
     [<code>.self-</code>(<code>flex-start|center|flex-end|stretch|baseline</code>)]
@@ -60,16 +61,18 @@
   </div>
 
   <h3>Grids:</h3>
-  <div class="code"><code>.flex.grid(1-12) > .cols > .col(1-12)</code> (works only with <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a> support)
-    [<code>.hidden</code>] hide a column by default (can become visible with breakpoints, see below)
+  <div class="code"><code>.flex.grid-(1-12)</code> (works only with <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a> support)
+    [<code>.col-(1-12)</code>] define size of the column (flex-basis) based on <var>.grid-*</var>
+    [<code>.col-*</code>][<code>.hidden</code>] hide a column by default (can become visible with breakpoints, see below)
+    [<code>.gaps-wrapper > .col-*</code>] wrap all <var>.col-*</var> with this if you use <var>.flex.gaps</var> for the grid to make proper gaps
 
     <b>media query breakpoints</b> can be overwritten with sass before including <var>flexbox.scss</var>, must be listed in descending order
     Max-width: <var>xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px</var>
 
-    [<code>.grid(1-12).(xl|lg|md|sm|xs)(1-12)</code>] e.g <code>"grid4 lg3 sm2 xs1"</code>
-    [<code>.col(1-12).(xl|lg|md|sm|xs)(1-12)</code>] e.g <code>"col2 lg1 sm2"</code>
-    [<code>.col*.(xl|lg|md|sm|xs)-hidden</code>] hide the column at some point, e.g. <code>"col5 xs-hidden"</code>
-    [<code>.col*.(xl|lg|md|sm|xs)-visible</code>] show the column at some point, e.g. <code>"col10 hidden sm-visible"</code>
+    [<code>.grid-(1-12).(xl|lg|md|sm|xs)(1-12)</code>] e.g <code>"grid-4 lg3 sm2 xs1"</code>
+    [<code>.col-(1-12).(xl|lg|md|sm|xs)(1-12)</code>] e.g <code>"col-2 lg1 sm2"</code>
+    [<code>.col-*.(xl|lg|md|sm|xs)-hidden</code>] hide the column at some point, e.g. <code>"col-5 xs-hidden"</code>
+    [<code>.col-*.(xl|lg|md|sm|xs)-visible</code>] show the column at some point, e.g. <code>"col-10 hidden sm-visible"</code>
   </div>
 
 
