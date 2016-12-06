@@ -6,10 +6,6 @@ $flexbox-gap-default: 1em !default;
 $flexbox-grid-selector: unquote("grid-") !default;
 $flexbox-col-selector: unquote("col-") !default;
 
-html {
-  --flex-gap: 0px;
-}
-
 .flex {
   display: flex;
 
@@ -173,7 +169,7 @@ html {
   &[class*="#{$flexbox-grid-selector}"] {
     flex-wrap: wrap;
     [class*="#{$flexbox-col-selector}"] {
-      flex: 0 1 calc(100% / var(--flex-grid) * var(--flex-col) - var(--flex-gap));
+      flex: 0 1 calc(100% / var(--flex-grid) * var(--flex-col) - var(--flex-gap, 0px));
       &.hidden {
         display: none;
       }
