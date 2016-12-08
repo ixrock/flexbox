@@ -154,55 +154,58 @@ $flexbox-col-selector: unquote("col-") !default;
     }
   }
 
-  // generate grids & columns for browsers with css-variables support
-  $grid: 1;
-  @while $grid <= $flexbox-grids-count {
-    &.#{$flexbox-grid-selector}#{$grid} {
-      --flex-grid: $grid;
+  @if ($flexbox-grids-count > 0) {
+    // generate grids & columns for browsers with css-variables support
+    $grid: 1;
+    @while $grid <= $flexbox-grids-count {
+      &.#{$flexbox-grid-selector}#{$grid} {
+        --flex-grid: $grid;
+      }
+      .#{$flexbox-col-selector}#{$grid} {
+        --flex-col: $grid;
+      }
+      $grid: $grid + 1;
     }
-    .#{$flexbox-col-selector}#{$grid} {
-      --flex-col: $grid;
-    }
-    $grid: $grid + 1;
-  }
 
-  &[class*="#{$flexbox-grid-selector}"] {
-    flex-wrap: wrap;
-    [class*="#{$flexbox-col-selector}"] {
-      flex: 0 1 calc(100% / var(--flex-grid) * var(--flex-col) - var(--flex-gap, 0px));
-      &.hidden {
-        display: none;
+    &[class*="#{$flexbox-grid-selector}"] {
+      flex-wrap: wrap;
+      [class*="#{$flexbox-col-selector}"] {
+        flex: 0 1 calc(100% / var(--flex-grid) * var(--flex-col) - var(--flex-gap, 0px));
+        &.hidden {
+          display: none;
+        }
       }
     }
-  }
 
-  // generate media breakpoints
-  @each $prefix, $breakpoint in $flexbox-breakpoints {
-    @media #{"(max-width: #{$breakpoint})"} {
-      $grid: 1;
-      @while $grid <= $flexbox-grids-count {
-        &.#{$prefix}#{$grid} {
-          --flex-grid: $grid;
+    // generate media breakpoints
+    @each $prefix, $breakpoint in $flexbox-breakpoints {
+      @media #{"(max-width: #{$breakpoint})"} {
+        $grid: 1;
+        @while $grid <= $flexbox-grids-count {
+          &.#{$prefix}#{$grid} {
+            --flex-grid: $grid;
+          }
+          .#{$prefix}#{$grid} {
+            --flex-col: $grid;
+          }
+          $grid: $grid + 1;
         }
-        .#{$prefix}#{$grid} {
-          --flex-col: $grid;
-        }
-        $grid: $grid + 1;
-      }
-      &[class*="#{$flexbox-grid-selector}"] {
-        .#{$prefix}-hidden {
-          display: none !important;
-        }
-        .#{$prefix}-visible {
-          display: block !important;
-          &.flex {
-            display: flex !important;
-            &.inline {
-              display: inline-flex !important;
+        &[class*="#{$flexbox-grid-selector}"] {
+          .#{$prefix}-hidden {
+            display: none !important;
+          }
+          .#{$prefix}-visible {
+            display: block !important;
+            &.flex {
+              display: flex !important;
+              &.inline {
+                display: inline-flex !important;
+              }
             }
           }
         }
       }
     }
   }
+
 }
