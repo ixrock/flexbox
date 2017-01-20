@@ -119,7 +119,9 @@ $flexbox-col-selector: unquote("col-") !default;
       order: 1;
     }
     &.grow {
-      flex-grow: 1;
+      // important note (flex bug or feature):
+      // flex-basis: 0% allows to extend container if contents more then its used size, 0 - not.
+      flex: 1 0 0%;
       &-fixed {
         flex: 1 0 0;
       }
