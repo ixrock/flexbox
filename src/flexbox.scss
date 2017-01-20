@@ -154,6 +154,18 @@ $flexbox-col-selector: unquote("col-") !default;
     }
   }
 
+  // fix for proper .box.grow-ing in firefox and safari
+  &.column {
+    > .box.grow {
+      height: 0;
+    }
+  }
+  &:not(.column) {
+    > .box.grow {
+      width: 0;
+    }
+  }
+
   @if ($flexbox-grids-count > 0) {
     // generate grids & columns for browsers with css-variables support
     $grid: 1;
