@@ -120,6 +120,9 @@ $flexbox-col-selector: unquote("col-") !default;
     }
     &.grow {
       flex-grow: 1;
+      &-fixed {
+        flex: 1 0 0;
+      }
     }
     &.nogrow {
       flex-grow: 0;
