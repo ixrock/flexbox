@@ -10,6 +10,7 @@
 <main style="padding: 2rem; margin: auto; width: 75%;">
   <h1>Flexbox + css variables = ❤</h1>
   <p>Learn flex boxes as is: classes just reflects css-properties!</p>
+  <p>Super small & easy: only <em>~3Kb</em> (minified version).</p>
 
   <h2>Install</h2>
   <ul>
@@ -29,11 +30,9 @@
     [<code>.center</code>] = vertically and horizontally centering children (magic trick with <var>margin: auto</var>)
     [<code>.fullsize</code>[<code>-viewport</code>] = set up <var>(width/height)</var> equal to 100% or 100vw/vh in case of <var>.fullsize-viewport</var>
     [<code>.gaps</code>] creates a gap between children <var>.box</var> elements, by default = 1em, requires support <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a>
-    [<code>.no-gaps</code>] resets a gap to <var>0px</var>
 
     Pro-tip 1: set up <var>html, body { height: 100%; }</var> in your main.css to fill whole viewport for <var>.flex.fullsize</var> container within body
     Pro-tip 2: to customize gap size override <code>--flex-gap</code> variable within <var>.flex.gaps</var> block.
-    If you use sass you can also define default gap size by overriding <var>$flexbox-gap-default</var> variable before including <var>flexbox.scss</var>
 
     <b>justify-content:</b> use one of the property modifiers (ex. <code>justify-center</code>)
     [<code>.justify-</code>(<code>flex-start|center|flex-end|space-around|space-between</code>)]
@@ -49,40 +48,30 @@
   <div class="code"><code>.flex > .box</code>
     [<code>.first</code>] = put element to the start (<var>order: -1</var>)
     [<code>.last</code>] = put element to the end (<var>order: 1</var>)
-    [<code>.grow</code>] = allow a flex child to grow and grab all possible free space in the flex container flow
+    [<code>.grow</code>[<code>-fixed</code>] = allow a flex child to grow and grab all possible free space in the flex container flow
     [<code>.nogrow</code>] = disallow a flex child to grow, might be useful with <var>.flex.auto</var>
     [<code>.noshrink</code>] = disallow a flex child to reduce its size, might be useful sometimes when sibling children have <code>.grow</code>
 
     <b>align-self:</b> override <var>.flex.align-*</var> for specific <var>.box</var>
     [<code>.self-</code>(<code>flex-start|center|flex-end|stretch|baseline</code>)]
 
-    <b>margin</b>: can be used to create magical offsets which fills all possible space around <code>.flex > .box</code>es
+    <b>margin</b>: can be used to create magical offsets which fills all possible space around <code>.flex > .box</code>-es
     [<code>.auto</code>] creates auto margins for all sides of the box
     [<code>.top</code>][<code>.bottom</code>][<code>.left</code>][<code>.right</code>]] bind to the side with zero-margin and create auto-space to opposite direction
   </div>
 
-  <h3>Grids:</h3>
-  <div class="code"><code>.flex.grid-(1-12)</code> (works only with <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a> support)
-    [<code>.col-(1-12)</code>] define size of the column (flex-basis) based on <var>.grid-*</var>
-    [<code>.col-*</code>][<code>.hidden</code>] hide a column by default (can become visible with breakpoints, see below)
-    [<code>.gaps-wrapper > .col-*</code>] wrap all <var>.col-*</var> with this if you use <var>.flex.gaps</var> for the grid to make proper gaps
+  <h3>Grids and columns:</h3>
+  <div class="code"><code>.flex.grid-(1-12) > .col-(1-12)</code> (works only with <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a> support)
 
-    <b>media query breakpoints</b> can be overwritten with sass before including <var>flexbox.scss</var>, must be listed in descending order
-    Max-width: <var>xl: 1440px, lg: 1280px, md: 960px, sm: 840px, xs: 600px</var>
-
-    [<code>.grid-(1-12).(xl|lg|md|sm|xs)(1-12)</code>] e.g <code>"grid-4 lg3 sm2 xs1"</code>
-    [<code>.col-(1-12).(xl|lg|md|sm|xs)(1-12)</code>] e.g <code>"col-2 lg1 sm2"</code>
-    [<code>.col-*.(xl|lg|md|sm|xs)-hidden</code>] hide the column at some point, e.g. <code>"col-5 xs-hidden"</code>
-    [<code>.col-*.(xl|lg|md|sm|xs)-visible</code>] show the column at some point, e.g. <code>"col-10 hidden sm-visible"</code>
+  Pro-tip: you can manually define in your css file custom sizes for grids and columns with following css-variables:
+  <code>--flex-grid: number</code> for <em>.flex</em> container and <code>--flex-col: number</code> to its children (<em>.box</em> or <em>.col-*</em>).
   </div>
-
 
   <h2>Examples</h2>
   <ul>
     <li><a href="examples/flexbox-playground.html">Playground</a></li>
     <li><a href="examples/flexbox-vertical-align.html">Vertical align</a></li>
     <li><a href="examples/flexbox-sticky-footer.html">Sticky footer</a></li>
-    <li><a href="examples/flexbox-responsive-grid.html">Responsive grid</a></li>
     <li><a href="examples/flexbox-layout.html">Layout with fixed header, sidebar and scrollable content area</a></li>
   </ul>
 

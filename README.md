@@ -2,6 +2,8 @@
 
 Learn flex boxes as is: classes just reflects css-properties!
 
+Super small & easy: only **~3Kb** (minified version).
+
 ## Install
 `npm install flex.box --save`
 
@@ -18,9 +20,8 @@ Learn flex boxes as is: classes just reflects css-properties!
     [.self-(flex-start|center|flex-end|stretch|baseline)]  /** align-self **/
     [.center.top.bottom.left.right]  /** margin **/
     
-.flex[.grid-(1-12).(xl|lg|md|sm|xs)(1-12)] /** grids **/
-    [.col-(1-12).(xl|lg|md|sm|xs)(1-12)-(hidden|visible)]
-    [.gaps-wrapper > .col-*]
+.flex[.grid-(1-12)] /** grid size **/
+    > [.col-(1-12)] /** column size */
 ```
 
 ## API docs and live examples

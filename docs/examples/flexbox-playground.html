@@ -10,17 +10,21 @@
       margin: var(--space) 0 0 var(--space);
       display: flex;
       flex-flow: row wrap;
+      align-items: flex-start;
     }
 
     main > * {
       flex: 1 0 500px;
       margin: 40px var(--space) var(--space) 0;
       position: relative;
-      min-height: 150px;
       border: 1px solid black;
     }
 
-    main > :after {
+    .example > .flex {
+      min-height: 175px;
+    }
+
+    .example > :after {
       content: 'class="' attr(class) '"';
       position: absolute;
       left: -1px;
@@ -30,13 +34,13 @@
       padding: .5rem;
     }
 
-    .box, [class*="col-"], .gaps-wrapper > .auto {
+    .box, [class*="col-"] {
       background: silver;
       text-align: center;
       padding: 5px;
     }
 
-    .box:after, [class*="col-"]:after, .gaps-wrapper > .auto:after {
+    .box:after, [class*="col-"]:after {
       content: attr(class);
     }
 
@@ -49,126 +53,135 @@
 <body>
 
 <main>
-  <div class="flex gaps auto">
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
+  <div class="example">
+    <div class="flex gaps auto">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
   </div>
 
-  <div class="flex gaps">
-    <div class="box"></div>
-    <div class="box grow"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
+  <div class="example">
+    <div class="flex gaps">
+      <div class="box"></div>
+      <div class="box grow"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
   </div>
 
-  <div class="flex gaps grid-12 custom-gaps">
-    <div class="gaps-wrapper">
+  <div class="example">
+    <div class="flex gaps grid-9 custom-gaps">
       <div class="col-1"></div>
       <div class="col-2"></div>
       <div class="col-3"></div>
-      <div class="auto"></div>
+      <div class="box grow"></div>
       <div class="col-5"></div>
       <div class="col-4"></div>
       <div class="col-3"></div>
       <div class="col-2"></div>
       <div class="col-1"></div>
-      <div class="auto"></div>
+      <div class="box grow"></div>
     </div>
   </div>
 
-  <div class="flex gaps grid-12">
-    <div class="gaps-wrapper">
-      <div class="auto"></div>
-      <div class="auto"></div>
-      <div class="auto"></div>
-      <div class="auto"></div>
-      <div class="auto"></div>
-      <div class="auto"></div>
-      <div class="auto"></div>
-      <div class="auto"></div>
-      <div class="auto"></div>
-      <div class="auto"></div>
-      <div class="auto"></div>
-      <div class="auto"></div>
+  <div class="example">
+    <div class="flex center">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
     </div>
   </div>
 
-  <div class="flex column gaps">
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box bottom"></div>
+  <div class="example">
+    <div class="flex column gaps">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box bottom"></div>
+    </div>
   </div>
 
-  <div class="flex column gaps">
-    <div class="box"></div>
-    <div class="box grow"></div>
-    <div class="box"></div>
+  <div class="example">
+    <div class="flex column gaps">
+      <div class="box"></div>
+      <div class="box grow"></div>
+      <div class="box"></div>
+    </div>
   </div>
 
-  <div class="flex center">
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
+  <div class="example">
+    <div class="flex">
+      <div class="box center left"></div>
+      <div class="box center top"></div>
+      <div class="box"></div>
+    </div>
   </div>
 
-  <div class="flex">
-    <div class="box center left"></div>
-    <div class="box center top"></div>
-    <div class="box"></div>
+  <div class="example">
+    <div class="flex">
+      <div class="box"></div>
+      <div class="box center"></div>
+      <div class="box"></div>
+    </div>
   </div>
 
-  <div class="flex">
-    <div class="box"></div>
-    <div class="box center"></div>
-    <div class="box"></div>
+  <div class="example">
+    <div class="flex center">
+      <div class="box top left"></div>
+      <div class="box"></div>
+      <div class="box right bottom"></div>
+    </div>
   </div>
 
-  <div class="flex center">
-    <div class="box top left"></div>
-    <div class="box"></div>
-    <div class="box right bottom"></div>
+  <div class="example">
+    <div class="flex auto">
+      <div class="box self-flex-start"></div>
+      <div class="box center"></div>
+      <div class="box self-flex-end"></div>
+    </div>
   </div>
 
-  <div class="flex auto">
-    <div class="box self-flex-start"></div>
-    <div class="box center"></div>
-    <div class="box self-flex-end"></div>
+  <div class="example">
+    <div class="flex justify-center align-center">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
   </div>
 
-  <div class="flex justify-center align-center">
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
+  <div class="example">
+    <div class="flex justify-space-around">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
   </div>
 
-  <div class="flex justify-space-around">
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
+  <div class="example">
+    <div class="flex justify-space-between">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+    </div>
   </div>
 
-  <div class="flex justify-space-between">
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-    <div class="box"></div>
-  </div>
-
-  <div class="flex grid-6">
-    <div class="col-1" style="background: #aaaaaa;"></div>
-    <div class="col-2" style="background: #bbbbbb;"></div>
-    <div class="col-3" style="background: #cccccc;"></div>
+  <div class="example">
+    <div class="flex grid-6">
+      <div class="col-1" style="background: #aaaaaa;"></div>
+      <div class="col-2" style="background: #bbbbbb;"></div>
+      <div class="col-3" style="background: #cccccc;"></div>
+    </div>
   </div>
 </main>
 
