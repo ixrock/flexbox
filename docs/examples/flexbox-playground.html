@@ -43,11 +43,6 @@
     .box:after, [class*="col-"]:after {
       content: attr(class);
     }
-
-    .gaps.custom-gaps {
-      --flex-gap: 10px;
-      padding: var(--flex-gap);
-    }
   </style>
 </head>
 <body>
@@ -74,7 +69,7 @@
   </div>
 
   <div class="example">
-    <div class="flex gaps grid-9 custom-gaps">
+    <div class="flex grid-9 gaps-grid">
       <div class="col-1"></div>
       <div class="col-2"></div>
       <div class="col-3"></div>

@@ -10,7 +10,7 @@ Super small & easy: only **~3Kb** (minified version).
 ## Quick cheatsheet
 ```css
 .flex
-    [.inline.auto.column.reverse.wrap.center.fullsize.gaps]
+    [.inline.auto.column.reverse.wrap.center.fullsize.gaps[-grid]]
     [.justify-(flex-start|center|flex-end|space-around|space-between)] /** justify-content **/
     [.align-(flex-start|center|flex-end|stretch|baseline)] /** align-items **/
     [.content-(flex-start|center|flex-end|space-around|space-between|stretch)] /** align-content **/

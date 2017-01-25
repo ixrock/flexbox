@@ -79,6 +79,22 @@ $flexbox-col-selector: unquote("col-") !default;
 
   // gaps
   &.gaps {
+    $gap: var(--flex-gap, #{$flexbox-gap-default});
+    &.column {
+      > :not(:last-child) {
+        margin-bottom: $gap;
+      }
+    }
+    &:not(.column) {
+      > :not(:last-child) {
+        margin-right: $gap;
+      }
+    }
+  }
+
+  // other method for creating gaps/gutters with using border and background-clip.
+  // fits better for grids with their different and fixed sizes of columns
+  &.gaps-grid {
     margin: calc(var(--flex-gap, #{$flexbox-gap-default}) / -2);
     > * {
       background-clip: padding-box !important;

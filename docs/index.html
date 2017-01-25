@@ -29,7 +29,8 @@
     [<code>.wrap</code>[<code>-reverse</code>]] = allow flex children go to the next line if they're not fitting
     [<code>.center</code>] = vertically and horizontally centering children (magic trick with <var>margin: auto</var>)
     [<code>.fullsize</code>[<code>-viewport</code>] = set up <var>(width/height)</var> equal to 100% or 100vw/vh in case of <var>.fullsize-viewport</var>
-    [<code>.gaps</code>] creates a gap between children <var>.box</var> elements, by default = 1em, requires support <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a>
+    [<code>.gaps</code>] create gutters between <var>.flex</var> children, by default = 1em (requires <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a>)
+    [<code>.gaps-grid</code>] other method of creating gutters with using <var>border</var> and <var>background-clip</var> and fits better for <var>.grid-*</var>s (see below).
 
     Pro-tip 1: set up <var>html, body { height: 100%; }</var> in your main.css to fill whole viewport for <var>.flex.fullsize</var> container within body
     Pro-tip 2: to customize gap size override <code>--flex-gap</code> variable within <var>.flex.gaps</var> block.
@@ -61,10 +62,7 @@
   </div>
 
   <h3>Grids and columns:</h3>
-  <div class="code"><code>.flex.grid-(1-12) > .col-(1-12)</code> (works only with <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a> support)
-
-  Pro-tip: you can manually define in your css file custom sizes for grids and columns with following css-variables:
-  <code>--flex-grid: number</code> for <em>.flex</em> container and <code>--flex-col: number</code> to its children (<em>.box</em> or <em>.col-*</em>).
+  <div class="code"><code>.flex.grid-(1-12) > .col-(1-12)</code> (requires <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a>)
   </div>
 
   <h2>Examples</h2>
