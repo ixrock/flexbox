@@ -81,6 +81,9 @@ $flexbox-col-selector: unquote("col-") !default;
   &.gaps {
     $gap: calc(var(--flex-gap, #{$flexbox-gap-default}) / 2);
     margin: calc(var(--flex-gap, #{$flexbox-gap-default}) / -2);
+    > .flex.gaps {
+      margin: 0;
+    }
     > * {
       margin: $gap;
     }
