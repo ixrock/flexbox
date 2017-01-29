@@ -43,6 +43,10 @@
     .box:after, [class*="col-"]:after {
       content: attr(class);
     }
+
+    .custom-gaps {
+      --flex-gap: 10px;
+    }
   </style>
 </head>
 <body>
@@ -69,7 +73,7 @@
   </div>
 
   <div class="example">
-    <div class="flex grid-9 gaps-grid">
+    <div class="flex gaps grid-9">
       <div class="col-1"></div>
       <div class="col-2"></div>
       <div class="col-3"></div>
@@ -84,12 +88,10 @@
   </div>
 
   <div class="example">
-    <div class="flex center">
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
-      <div class="box"></div>
+    <div class="flex grid-6 gaps custom-gaps">
+      <div class="col-1" style="background: #aaaaaa;"></div>
+      <div class="col-2" style="background: #bbbbbb;"></div>
+      <div class="col-3" style="background: #cccccc;"></div>
     </div>
   </div>
 
@@ -105,6 +107,16 @@
     <div class="flex column gaps">
       <div class="box"></div>
       <div class="box grow"></div>
+      <div class="box"></div>
+    </div>
+  </div>
+
+  <div class="example">
+    <div class="flex center">
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
+      <div class="box"></div>
       <div class="box"></div>
     </div>
   </div>
@@ -168,14 +180,6 @@
       <div class="box"></div>
       <div class="box"></div>
       <div class="box"></div>
-    </div>
-  </div>
-
-  <div class="example">
-    <div class="flex grid-6">
-      <div class="col-1" style="background: #aaaaaa;"></div>
-      <div class="col-2" style="background: #bbbbbb;"></div>
-      <div class="col-3" style="background: #cccccc;"></div>
     </div>
   </div>
 </main>

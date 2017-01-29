@@ -79,26 +79,10 @@ $flexbox-col-selector: unquote("col-") !default;
 
   // gaps
   &.gaps {
-    $gap: var(--flex-gap, #{$flexbox-gap-default});
-    &.column {
-      > :not(:last-child) {
-        margin-bottom: $gap;
-      }
-    }
-    &:not(.column) {
-      > :not(:last-child) {
-        margin-right: $gap;
-      }
-    }
-  }
-
-  // other method for creating gaps/gutters with using border and background-clip.
-  // fits better for grids with their different and fixed sizes of columns
-  &.gaps-grid {
+    $gap: calc(var(--flex-gap, #{$flexbox-gap-default}) / 2);
     margin: calc(var(--flex-gap, #{$flexbox-gap-default}) / -2);
     > * {
-      background-clip: padding-box !important;
-      border: calc(var(--flex-gap, #{$flexbox-gap-default}) / 2) solid transparent;
+      margin: $gap;
     }
   }
 
@@ -155,6 +139,7 @@ $flexbox-col-selector: unquote("col-") !default;
   $grid: 1;
   $grids: ();
   $cols: ();
+  $cols-gaps: ();
   @while $grid <= $flexbox-grids-count {
     &.#{$flexbox-grid-selector}#{$grid} {
       --flex-grid: $grid;
@@ -164,12 +149,17 @@ $flexbox-col-selector: unquote("col-") !default;
     }
     $grids: append($grids, #{& +"."+ $flexbox-grid-selector + $grid}, "comma");
     $cols: append($cols, #{& +" > ."+ $flexbox-col-selector + $grid}, "comma");
+    $cols-gaps: append($cols-gaps, #{& +".gaps > ."+ $flexbox-col-selector + $grid}, "comma");
     $grid: $grid + 1;
   }
 
   @at-root {
     #{$grids} {
       flex-wrap: wrap;
+    }
+
+    #{$cols-gaps} {
+      flex: 0 1 calc(100% / var(--flex-grid) * var(--flex-col) - var(--flex-gap, #{$flexbox-gap-default}));
     }
 
     #{$cols} {
