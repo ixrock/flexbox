@@ -35,14 +35,18 @@
     article {
       overflow: auto;
       width: 100%;
-      padding: 2rem;
+      --flex-gap: 2rem;
+      padding: var(--flex-gap);
     }
-    .test.gaps {
-      --flex-gap: 10px;
+    .my-block {
+      margin-bottom: var(--flex-gap);
     }
-    .test .box {
+    .my-block .box:not(.flex) {
       padding: 10px;
-      background-color: silver;
+      background-color: black;
+      color: white;
+      border-radius: 5px;
+      border: 5px solid silver;
     }
   </style>
 </head>
@@ -55,10 +59,10 @@
     <article class="box grow">
       <!--Main content area-->
 
-      <div class="test flex gaps">
-        <div class="box">1</div>
+      <div class="my-block flex gaps">
+        <div class="box grow">1</div>
         <div class="box">2</div>
-        <div class="flex column gaps">
+        <div class="box grow flex column gaps auto">
           <div class="box">3</div>
           <div class="box">4</div>
         </div>

@@ -79,13 +79,26 @@ $flexbox-col-selector: unquote("col-") !default;
 
   // gaps
   &.gaps {
-    $gap: calc(var(--flex-gap, #{$flexbox-gap-default}) / 2);
-    margin: calc(var(--flex-gap, #{$flexbox-gap-default}) / -2);
-    > .flex.gaps {
-      margin: 0;
+    &:not(.wrap):not([class*="#{$flexbox-grid-selector}"]) {
+      $gap: var(--flex-gap, #{$flexbox-gap-default});
+      &.column {
+        > :not(:last-child) {
+          margin-bottom: $gap;
+        }
+      }
+      &:not(.column) {
+        > :not(:last-child) {
+          margin-right: $gap;
+        }
+      }
     }
-    > * {
-      margin: $gap;
+    // grids and multi-line flex-containers
+    &.wrap, &[class*="#{$flexbox-grid-selector}"] {
+      $gap: calc(var(--flex-gap, #{$flexbox-gap-default}) / 2);
+      margin: calc(var(--flex-gap, #{$flexbox-gap-default}) / -2);
+      > * {
+        margin: $gap;
+      }
     }
   }
 
