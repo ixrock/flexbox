@@ -100,6 +100,10 @@ $flexbox-col-selector: unquote("col-") !default;
         margin: $gap;
       }
     }
+    // reset margin for nested grids
+    &[class*="#{$flexbox-grid-selector}"][class*="#{$flexbox-col-selector}"] {
+      margin: 0;
+    }
   }
 
   // children
@@ -157,7 +161,7 @@ $flexbox-col-selector: unquote("col-") !default;
   $cols: ();
   $cols-gaps: ();
   @while $grid <= $flexbox-grids-count {
-    &.#{$flexbox-grid-selector}#{$grid} {
+    &.#{$flexbox-grid-selector}#{$grid} > * {
       --flex-grid: $grid;
     }
     .#{$flexbox-col-selector}#{$grid} {
@@ -165,7 +169,7 @@ $flexbox-col-selector: unquote("col-") !default;
     }
     $grids: append($grids, #{& +"."+ $flexbox-grid-selector + $grid}, "comma");
     $cols: append($cols, #{& +" > ."+ $flexbox-col-selector + $grid}, "comma");
-    $cols-gaps: append($cols-gaps, #{& +".gaps > ."+ $flexbox-col-selector + $grid}, "comma");
+    $cols-gaps: append($cols-gaps, #{& +".gaps > ."+ $flexbox-col-selector + $grid + ":not([class*='"+ $flexbox-grid-selector +"'])"}, "comma");
     $grid: $grid + 1;
   }
 
