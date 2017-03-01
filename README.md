@@ -22,6 +22,8 @@ Super small & easy: only **~3Kb** (minified version).
     
 .flex[.grid-(1-12)] /** grid size **/
     > [.col-(1-12)] /** column size */
+    [.cols-grow] /* define if inner columns can grow with flex-grow, default behavior */
+    [.cols-nogrow] /* disallow col-[1-12] to grow and therefore be in some cases more then expected */
 ```
 
 ## API docs and live examples

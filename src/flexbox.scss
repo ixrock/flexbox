@@ -176,14 +176,20 @@ $flexbox-col-selector: unquote("col-") !default;
   @at-root {
     #{$grids} {
       flex-wrap: wrap;
+      &.cols-grow {
+        --flex-col-grow: 1;
+      }
+      &.cols-nogrow {
+        --flex-col-grow: 0;
+      }
     }
 
     #{$cols-gaps} {
-      flex: 0 1 calc(100% / var(--flex-grid) * var(--flex-col) - var(--flex-gap, #{$flexbox-gap-default}));
+      flex: var(--flex-col-grow, 1) 0 calc(100% / var(--flex-grid) * var(--flex-col) - var(--flex-gap, #{$flexbox-gap-default}));
     }
 
     #{$cols} {
-      flex: 0 1 calc(100% / var(--flex-grid) * var(--flex-col));
+      flex: var(--flex-col-grow, 1) 0 calc(100% / var(--flex-grid) * var(--flex-col));
     }
   }
 }
