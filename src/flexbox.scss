@@ -13,12 +13,8 @@ $flexbox-col-selector: unquote("col-") !default;
   }
 
   &.fullsize {
-    width: 100%;
-    height: 100%;
-    &-viewport {
-      width: 100vw;
-      height: 100vh;
-    }
+    width: 100vw;
+    height: 100vh;
   }
 
   &.column {
@@ -172,15 +168,11 @@ $flexbox-col-selector: unquote("col-") !default;
     #{$grids} {
       > * {
         // default column size for any grid is 1
-        flex: 0 1 calc(100% / var(--flex-grid));
-        overflow: hidden;
-        text-overflow: ellipsis;
+        flex: 0 4 calc(100% / var(--flex-grid));
       }
     }
     #{$cols} {
       flex: 0 1 calc(100% / var(--flex-grid) * var(--flex-col));
-      overflow: hidden;
-      text-overflow: ellipsis;
     }
   }
 }

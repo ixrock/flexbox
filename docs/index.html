@@ -28,11 +28,10 @@
     [<code>.column</code>[<code>.reverse</code>]] = change flex flow direction from <var>row</var> (default) to <var>column</var>
     [<code>.wrap</code>[<code>-reverse</code>]] = allow flex children go to the next line if they're not fitting
     [<code>.center</code>] = vertically and horizontally centering children (magic trick with <var>margin: auto</var>)
-    [<code>.fullsize</code>[<code>-viewport</code>] = set up <var>(width/height)</var> equal to 100% or 100vw/vh in case of <var>.fullsize-viewport</var>
+    [<code>.fullsize</code>] = set up width and height to viewport size (100vw and 100vh respectively)
     [<code>.gaps</code>] create gutters between <var>.flex</var> children, by default = 1em (requires <a href="http://caniuse.com/#feat=css-variables"><b>css-variables</b></a>)
 
-    Pro-tip 1: set up <var>html, body { height: 100%; }</var> in your main.css to fill whole viewport for <var>.flex.fullsize</var> container within body
-    Pro-tip 2: to customize gap size override <code>--flex-gap</code> variable within <var>.flex.gaps</var> block.
+    Pro-tip: to customize gap size override <code>--flex-gap</code> variable within <var>.flex.gaps</var> block
 
     <b>justify-content:</b> use one of the property modifiers (ex. <code>justify-center</code>)
     [<code>.justify-</code>(<code>flex-start|center|flex-end|space-around|space-between</code>)]
@@ -72,7 +71,8 @@
     <li><a href="examples/flexbox-playground.html">Playground</a></li>
     <li><a href="examples/flexbox-vertical-align.html">Vertical align</a></li>
     <li><a href="examples/flexbox-sticky-footer.html">Sticky footer</a></li>
-    <li><a href="examples/flexbox-layout.html">Layout with fixed header, sidebar and scrollable content area</a></li>
+    <li><a href="examples/flexbox-layout-grid.html">Grid layout example</a></li>
+    <li><a href="examples/flexbox-layout-sample.html">Layout with fixed header, sidebar and scrollable content area</a></li>
   </ul>
 
   <h2>Links</h2>

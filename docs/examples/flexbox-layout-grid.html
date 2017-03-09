@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Flexbox - grid layout example</title>
+  <link rel="stylesheet" href="../common.css"/>
+  <style type="text/css">
+    main {
+      --flex-gap: 1.5rem;
+      padding: var(--flex-gap);
+    }
+    .box {
+      background: #2e3136;
+      padding: 1rem;
+      color: silver;
+      border-radius: 3px;
+      min-height: 100px;
+    }
+    .box:before {
+      content: attr(class);
+    }
+  </style>
+</head>
+<body>
+
+<main class="flex gaps column">
+  <div class="flex gaps grid-3">
+    <div class="box col-2"></div>
+    <div class="flex column gaps">
+      <div class="flex gaps grid-2">
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+      <div class="flex gaps grid-2">
+        <div class="box"></div>
+        <div class="box"></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="flex gaps grid-3">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+  </div>
+
+  <div class="flex gaps grid-9">
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+    <div class="box"></div>
+  </div>
+
+  <div class="flex gaps grid-9">
+    <div class="box col-3"></div>
+    <div class="box col-3"></div>
+    <div class="box col-3"></div>
+  </div>
+
+  <div class="flex gaps grid-9">
+    <div class="box"></div>
+    <div class="box col-3"></div>
+    <div class="box"></div>
+    <div class="box col-3"></div>
+    <div class="box"></div>
+  </div>
+</main>
+
+</body>
+</html>
