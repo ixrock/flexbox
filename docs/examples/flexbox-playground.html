@@ -24,6 +24,14 @@
       min-height: 175px;
     }
 
+    .example.multi-line > .flex {
+      min-height: 0;
+    }
+
+    .example.multi-line > .flex:not(:last-child) {
+      margin-bottom: var(--flex-gap, 1em);
+    }
+
     .example > :after {
       content: 'class="' attr(class) '"';
       position: absolute;
@@ -34,13 +42,13 @@
       padding: .5rem;
     }
 
-    .box, [class*="col-"] {
+    .flex > * {
       background: silver;
       text-align: center;
       padding: 5px;
     }
 
-    .box:after, [class*="col-"]:after {
+    .flex > *:after {
       content: attr(class);
     }
 
@@ -72,26 +80,37 @@
     </div>
   </div>
 
-  <div class="example">
-    <div class="flex gaps grid-9 cols-nogrow">
-      <div class="col-1"></div>
+  <div class="example multi-line">
+    <div class="flex gaps grid-12">
       <div class="col-2"></div>
+      <div class="col-2"></div>
+      <div class="col-2"></div>
+      <div class="col-2"></div>
+      <div class="col-2"></div>
+      <div class="col-2"></div>
+    </div>
+    <div class="flex gaps grid-12">
       <div class="col-3"></div>
-      <div class="box grow"></div>
-      <div class="col-5"></div>
+      <div class="col-3"></div>
+      <div class="col-3"></div>
+      <div class="col-3"></div>
+    </div>
+    <div class="flex gaps grid-12">
       <div class="col-4"></div>
-      <div class="col-3"></div>
-      <div class="col-2"></div>
-      <div class="col-1"></div>
-      <div class="box grow"></div>
+      <div class="col-4"></div>
+      <div class="col-4"></div>
+    </div>
+    <div class="flex gaps grid-12">
+      <div class="col-6"></div>
+      <div class="col-6"></div>
     </div>
   </div>
 
   <div class="example">
     <div class="flex grid-6 gaps custom-gaps">
-      <div class="col-1" style="background: #aaaaaa;"></div>
-      <div class="col-2" style="background: #bbbbbb;"></div>
-      <div class="col-3" style="background: #cccccc;"></div>
+      <div class="col-1"></div>
+      <div class="col-2"></div>
+      <div class="col-3"></div>
     </div>
   </div>
 

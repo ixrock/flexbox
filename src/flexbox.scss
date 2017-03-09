@@ -41,7 +41,7 @@ $flexbox-col-selector: unquote("col-") !default;
 
   &.auto {
     > * {
-      flex: 1 0 0;
+      flex: 1 0 0%;
     }
   }
 
@@ -79,7 +79,7 @@ $flexbox-col-selector: unquote("col-") !default;
 
   // gaps
   &.gaps {
-    &:not(.wrap):not([class*="#{$flexbox-grid-selector}"]) {
+    &:not(.wrap) {
       $gap: var(--flex-gap, #{$flexbox-gap-default});
       &.column {
         > :not(:last-child) {
@@ -93,16 +93,16 @@ $flexbox-col-selector: unquote("col-") !default;
       }
     }
     // grids and multi-line flex-containers
-    &.wrap, &[class*="#{$flexbox-grid-selector}"] {
+    &.wrap {
       $gap: calc(var(--flex-gap, #{$flexbox-gap-default}) / 2);
       margin: calc(var(--flex-gap, #{$flexbox-gap-default}) / -2);
       > * {
         margin: $gap;
       }
-    }
-    // reset margin for nested grids
-    &[class*="#{$flexbox-grid-selector}"][class*="#{$flexbox-col-selector}"] {
-      margin: 0;
+      // reset margin for nested grids
+      &[class*="#{$flexbox-col-selector}"] {
+        margin: 0;
+      }
     }
   }
 
@@ -124,6 +124,7 @@ $flexbox-col-selector: unquote("col-") !default;
     }
     &.nogrow {
       flex-grow: 0;
+      flex-basis: auto;
     }
     &.noshrink {
       flex-shrink: 0;
@@ -159,7 +160,7 @@ $flexbox-col-selector: unquote("col-") !default;
   $grid: 1;
   $grids: ();
   $cols: ();
-  $cols-gaps: ();
+
   @while $grid <= $flexbox-grids-count {
     &.#{$flexbox-grid-selector}#{$grid} > * {
       --flex-grid: $grid;
@@ -169,27 +170,22 @@ $flexbox-col-selector: unquote("col-") !default;
     }
     $grids: append($grids, #{& +"."+ $flexbox-grid-selector + $grid}, "comma");
     $cols: append($cols, #{& +" > ."+ $flexbox-col-selector + $grid}, "comma");
-    $cols-gaps: append($cols-gaps, #{& +".gaps > ."+ $flexbox-col-selector + $grid + ":not([class*='"+ $flexbox-grid-selector +"'])"}, "comma");
     $grid: $grid + 1;
   }
 
+  // default grid size for every .flex container is 12
+  --flex-grid: $flexbox-grids-count;
+
   @at-root {
     #{$grids} {
-      flex-wrap: wrap;
-      &.cols-grow {
-        --flex-col-grow: 1;
+      > * {
+        // default column size for any grid is 1
+        flex: 0 1 calc(100% / var(--flex-grid));
       }
-      &.cols-nogrow {
-        --flex-col-grow: 0;
-      }
-    }
-
-    #{$cols-gaps} {
-      flex: var(--flex-col-grow, 1) 0 calc(100% / var(--flex-grid) * var(--flex-col) - var(--flex-gap, #{$flexbox-gap-default}));
     }
 
     #{$cols} {
-      flex: var(--flex-col-grow, 1) 0 calc(100% / var(--flex-grid) * var(--flex-col));
+      flex: 0 1 calc(100% / var(--flex-grid) * var(--flex-col));
     }
   }
 }
