@@ -163,6 +163,8 @@ $flexbox-col-selector: unquote("col-") !default;
       > * {
         // default column size for any grid is 1
         flex: 0 1 calc(100% / var(--flex-grid));
+        overflow: hidden;
+        text-overflow: ellipsis;
       }
     }
     #{$cols} {
