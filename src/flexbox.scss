@@ -41,7 +41,7 @@ $flexbox-col-selector: unquote("col-") !default;
 
   &.auto {
     > * {
-      flex: 1 0 0%;
+      flex: 1 1 0%;
     }
   }
 
@@ -79,30 +79,12 @@ $flexbox-col-selector: unquote("col-") !default;
 
   // gaps
   &.gaps {
-    &:not(.wrap) {
-      $gap: var(--flex-gap, #{$flexbox-gap-default});
-      &.column {
-        > :not(:last-child) {
-          margin-bottom: $gap;
-        }
-      }
-      &:not(.column) {
-        > :not(:last-child) {
-          margin-right: $gap;
-        }
-      }
+    $gap: var(--flex-gap, #{$flexbox-gap-default});
+    &.column > :not(:last-child) {
+      margin-bottom: $gap;
     }
-    // grids and multi-line flex-containers
-    &.wrap {
-      $gap: calc(var(--flex-gap, #{$flexbox-gap-default}) / 2);
-      margin: calc(var(--flex-gap, #{$flexbox-gap-default}) / -2);
-      > * {
-        margin: $gap;
-      }
-      // reset margin for nested grids
-      &[class*="#{$flexbox-col-selector}"] {
-        margin: 0;
-      }
+    &:not(.column) > :not(:last-child) {
+      margin-right: $gap;
     }
   }
 
@@ -183,9 +165,10 @@ $flexbox-col-selector: unquote("col-") !default;
         flex: 0 1 calc(100% / var(--flex-grid));
       }
     }
-
     #{$cols} {
       flex: 0 1 calc(100% / var(--flex-grid) * var(--flex-col));
+      overflow: hidden;
+      text-overflow: ellipsis;
     }
   }
 }
