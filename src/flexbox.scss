@@ -5,6 +5,12 @@ $flexbox-gap-default: 1em !default;
 $flexbox-grid-selector: unquote("grid-") !default;
 $flexbox-col-selector: unquote("col-") !default;
 
+@mixin safariOnly {
+  @media not all and (min-resolution: .001dpcm) {
+    @content;
+  }
+}
+
 .flex {
   display: flex;
 
@@ -106,6 +112,9 @@ $flexbox-col-selector: unquote("col-") !default;
       flex: 1 0;
       &-fixed {
         flex: 1 0 0;
+        @include safariOnly {
+          flex-basis: 0%;
+        }
       }
     }
     &.nogrow {
