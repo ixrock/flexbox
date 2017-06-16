@@ -182,4 +182,11 @@ $flexbox-col-selector: unquote("col-") !default;
       flex: 0 1 calc(100% / var(--flex-grid) * var(--flex-col));
     }
   }
+
+  // firefox fix: don't allow to flex-children go beyond its flex container
+  > {
+    input, textarea {
+      min-width: 0;
+    }
+  }
 }
