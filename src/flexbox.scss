@@ -102,6 +102,7 @@ $flexbox-col-selector: unquote("col-") !default;
 
   // children
   > .box {
+    flex: 0 1 auto;
     &.first {
       order: -1;
     }
@@ -109,7 +110,7 @@ $flexbox-col-selector: unquote("col-") !default;
       order: 1;
     }
     &.grow {
-      flex: 1 0;
+      flex: 1 1 auto;
       &-fixed {
         flex: 1 0 0;
         @include safariOnly {
