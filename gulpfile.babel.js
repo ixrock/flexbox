@@ -3,8 +3,8 @@ import autoprefixer from 'gulp-autoprefixer'
 import sass from 'gulp-sass'
 import bs from 'browser-sync'
 
-const srcDir = './src/';
-const docsDir = './docs/';
+const srcDir = 'src/';
+const docsDir = 'docs/';
 const sassFiles = srcDir + '**.scss';
 
 // development watch mode with local server and auto-reloading browsers
@@ -13,7 +13,8 @@ gulp.task('default', () => {
   browserSync.init({
     notify: false,
     startPath: docsDir,
-    server: './'
+    server: './',
+    open: true,
   });
   gulp.watch(sassFiles, ['sass']);
   gulp.watch([
