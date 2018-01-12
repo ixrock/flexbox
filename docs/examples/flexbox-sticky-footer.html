@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Flexbox - sticky footer</title>
   <link rel="stylesheet" href="../common.css"/>
+  <meta name="viewport" content="initial-scale=1">
   <style type="text/css">
     article {
       background: lightyellow;
@@ -21,7 +22,7 @@
 <main class="flex column fullsize">
   <article class="box grow">
     Main content
-    <p><a href="#" onclick="extra.hidden = !extra.hidden; return false">Show/hide scrollbar</a></p>
+    <p><a href="#" onclick="extra.hidden = !extra.hidden; return false">Show/hide more contents</a></p>
     <p id="extra" hidden>
       1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>
       1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>1 <br>
@@ -30,7 +31,7 @@
       END
     </p>
   </article>
-  <footer class="box">Sticky footer with auto-height depending on contents</footer>
+  <footer class="box">This footer attached to the bottom when main block has not too much contents</footer>
 </main>
 
 </body>

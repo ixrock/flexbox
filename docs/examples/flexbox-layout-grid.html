@@ -4,7 +4,11 @@
   <meta charset="UTF-8">
   <title>Flexbox - grid layout example</title>
   <link rel="stylesheet" href="../common.css"/>
+  <meta name="viewport" content="initial-scale=1">
   <style type="text/css">
+    body {
+      min-width: 700px;
+    }
     main {
       --flex-gap: 1.5rem;
       padding: var(--flex-gap);
@@ -22,6 +26,10 @@
   </style>
 </head>
 <body>
+
+<p class="back">
+  <a href="..">&larr; Back to docs</a>
+</p>
 
 <main class="flex gaps column">
   <div class="flex gaps grid-3">

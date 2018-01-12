@@ -4,18 +4,17 @@
   <meta charset="UTF-8">
   <title>Flexbox - playground</title>
   <link rel="stylesheet" href="../common.css"/>
+  <meta name="viewport" content="initial-scale=1">
   <style type="text/css">
     main {
-      --space: 2rem;
-      margin: var(--space) 0 0 var(--space);
       display: flex;
       flex-flow: row wrap;
       align-items: flex-start;
     }
 
     main > * {
-      flex: 1 0 500px;
-      margin: 40px var(--space) var(--space) 0;
+      flex: 1 0 300px;
+      margin: 30px var(--space);
       position: relative;
       border: 1px solid black;
     }
@@ -58,6 +57,10 @@
   </style>
 </head>
 <body>
+
+<p class="back">
+  <a href="..">&larr; Back to docs</a>
+</p>
 
 <main>
   <div class="example">
