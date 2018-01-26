@@ -5,7 +5,12 @@ Learn flex boxes as is: classes just reflects css-properties!
 Super small & easy: only **~3Kb** (minified version).
 
 ## Install
+
+`yarn add flex.box`
+
 `npm install flex.box --save`
+
+`bower install flex.box --save`
 
 ## Quick cheatsheet
 ```css
