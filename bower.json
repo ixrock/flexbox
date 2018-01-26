@@ -1,0 +1,23 @@
+{
+  "name": "flex.box",
+  "description": "CSS library for easier work with flex boxes",
+  "main": "src/flexbox.scss",
+  "authors": [
+    "ixrock"
+  ],
+  "license": "MIT",
+  "keywords": [
+    "flexbox",
+    "grid",
+    "css",
+    "sass"
+  ],
+  "homepage": "https://github.com/ixrock/flexbox",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
