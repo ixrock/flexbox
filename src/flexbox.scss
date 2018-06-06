@@ -158,10 +158,10 @@ $flexbox-col-selector: unquote("col-") !default;
 
   @while $grid <= $flexbox-grids-count {
     &.#{$flexbox-grid-selector}#{$grid} > * {
-      --flex-grid: $grid;
+      --flex-grid: #{$grid};
     }
     .#{$flexbox-col-selector}#{$grid} {
-      --flex-col: $grid;
+      --flex-col: #{$grid};
     }
     $grids: append($grids, #{& +"."+ $flexbox-grid-selector + $grid}, "comma");
     $cols: append($cols, #{& +" > ."+ $flexbox-col-selector + $grid}, "comma");
@@ -169,7 +169,7 @@ $flexbox-col-selector: unquote("col-") !default;
   }
 
   // default grid size for every .flex container is 12
-  --flex-grid: $flexbox-grids-count;
+  --flex-grid: #{$flexbox-grids-count};
 
   @at-root {
     #{$grids} {
